@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from "react";
+import Addons from "../Addons/Addons";
 import {
   ProductsContainer,
   ProductWrapper,
@@ -9,30 +10,35 @@ import {
   ProductInfo,
   ProductDesc,
   ProductPrice,
-  ProductButton
-} from './ProductsElements';
+  ProductButton,
+} from "./ProductsElements";
 
-const Products = ({ heading, data, onAdd }) => {
-
+const Products = ({ heading, data }) => {
+  const [popup, setPopup] = useState(false);
   return (
-    <ProductsContainer>
-      <ProductsHeading>{heading}</ProductsHeading>
-      <ProductWrapper>
-        {data.map((product, index) => {
-          return (
-            <ProductCard key={index} onAdd={onAdd}>
-              <ProductImg src={product.img} alt={product.alt} />
-              <ProductInfo>
-                <ProductTitle>{product.name}</ProductTitle>
-                <ProductDesc>{product.desc}</ProductDesc>
-                <ProductPrice>{product.price}</ProductPrice>
-                <ProductButton onClick={() => onAdd(product)}>{product.button}</ProductButton>
-              </ProductInfo>
-            </ProductCard>
-          );
-        })}
-      </ProductWrapper>
-    </ProductsContainer>
+    <>
+      {popup ? <Addons pizza={data} setPopup={setPopup} /> : false}
+      <ProductsContainer>
+        <ProductsHeading> {heading} </ProductsHeading>
+        <ProductWrapper>
+          {data.map((product, index) => {
+            return (
+              <ProductCard key={index}>
+                <ProductImg src={product.img} alt={product.alt} />
+                <ProductInfo>
+                  <ProductTitle> {product.name} </ProductTitle>
+                  <ProductDesc> {product.desc} </ProductDesc>
+                  <ProductPrice> {product.price} </ProductPrice>
+                  <ProductButton onClick={() => setPopup(!popup)}>
+                    {product.button}
+                  </ProductButton>
+                </ProductInfo>
+              </ProductCard>
+            );
+          })}
+        </ProductWrapper>
+      </ProductsContainer>
+    </>
   );
 };
 
