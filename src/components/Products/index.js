@@ -26,7 +26,7 @@ const Products = ({ heading, data, onAdd }) => {
                 <ProductTitle>{product.name}</ProductTitle>
                 <ProductDesc>{product.desc}</ProductDesc>
                 <ProductPrice>{product.price}</ProductPrice>
-                <ProductButton onClick={() => onAdd(product)}>{product.button}</ProductButton>
+                <ProductButton onClick={() => onAdd(product)} >{product.button}</ProductButton>
               </ProductInfo>
             </ProductCard>
           );

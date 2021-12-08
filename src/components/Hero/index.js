@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
 import Cart from '../Cart';
+import data from '../Products/data';
+import Footer from '../Footer';
 import {
   HeroContainer,
   HeroContent,
@@ -9,7 +11,7 @@ import {
   HeroH1,
   HeroP
 } from './HeroElements';
-import data from '../Products/data';
+import Products from '../Products';
 
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,10 +23,10 @@ const Hero = () => {
   const toggleCart = () => {
     setIsCartOpens(!isCartOpens);
   };
-
   const { products } = data;
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
+    console.log("inside on add func");
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
       setCartItems(
@@ -33,8 +35,10 @@ const Hero = () => {
         )
       );
     } else {
+      console.log("inside else statement");
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
+    console.log(cartItems);
   };
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
@@ -55,13 +59,16 @@ const Hero = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Cart isOpen={isCartOpens} toggle={toggleCart} cartItems={cartItems}
           onAdd={onAdd}
-          onRemove={onRemove} />
+          onRemove={onRemove}/>
       <HeroContent>
         <HeroItems>
           <HeroH1><div>The</div> <div>Circle Dream</div></HeroH1>
           <HeroP>NEVER ENDING PIZZA-BILITIES</HeroP>
         </HeroItems>
       </HeroContent>
+      <Products heading='Comfort Combos' data={data.productData} products={products} onAdd={onAdd}/>
+      <Products heading='Desert' data={data.productDataTwo} products={products} onAdd={onAdd}/>
+      <Footer />
     </HeroContainer>
   );
 };
