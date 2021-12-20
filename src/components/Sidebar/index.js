@@ -14,7 +14,7 @@ const Sidebar = ({ isOpen, toggle }) => {
         <CloseIcon />
       </Icon>
       <SidebarMenu>
-        <SidebarLink onClick={() => window.location.replace("../../App.js/Products")}>Pizzas</SidebarLink>
+        <SidebarLink>Pizzas</SidebarLink>
         <SidebarLink to='/'>Desserts</SidebarLink>
         <SidebarLink to='/'>Full Menu</SidebarLink>
       </SidebarMenu>

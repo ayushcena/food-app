@@ -4,6 +4,8 @@ import {
   Icon,
   CloseIcon
 } from './CartElements';
+import './index.css';
+
 
 const Cart =  (props) => {
   const { cartItems, onAdd, onRemove, isOpen, toggle } = props;
@@ -21,12 +23,12 @@ const Cart =  (props) => {
           <div key={item.id} className="row">
             <div className="col-2">{item.name}</div>
             <div className="col-2">
-              <button onClick={() => onRemove(item)} className="remove">
+              <span onClick={() => onRemove(item)} className="remove">
                 -
-              </button>{' '}
-              <button onClick={() => onAdd(item)} className="add">
+              </span>{' '}
+              <span onClick={() => onAdd(item)} className="add">
                 +
-              </button>
+              </span>
             </div>
             <div className="col-2 text-right">
               {item.qty} x ${item.price.toFixed(2)}
@@ -50,7 +52,7 @@ const Cart =  (props) => {
         )}
       </div>
       <div className="bottom">
-              <button className="checkout" onClick={() => alert('Implement Checkout!')}>
+              <button className="checkout">
                 Checkout
               </button>
             </div>

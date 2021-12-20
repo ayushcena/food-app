@@ -10,6 +10,7 @@ export const SidebarContainer = styled.aside`
   display: grid;
   align-items: center;
   top: 0;
+  overflow: scroll;
   transition: 0.3s ease-in-out;
   right: ${({ isOpen }) => (isOpen ? '0' : '-1000px')};
 
@@ -19,17 +20,18 @@ export const SidebarContainer = styled.aside`
 `;
 
 export const CloseIcon = styled(FaTimes)`
+  cursor: pointer;
   color: #000;
 `;
 
 export const Icon = styled.div`
   position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
+  top: 0.7rem;
+  right: -3rem;
   background: transparent;
   border: transparent;
   font-size: 2rem;
-  cursor: pointer;
+  // cursor: pointer;
   outline: none;
 `;
 
