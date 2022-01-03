@@ -5,6 +5,7 @@ import {
   CloseIcon
 } from './CartElements';
 import './index.css';
+import Example from './login';
 
 
 const Cart =  (props) => {
@@ -12,9 +13,9 @@ const Cart =  (props) => {
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const totalPrice = itemsPrice;
     return (
-        <SidebarContainer isOpen={isOpen} onClick={toggle}>
-            <Icon onClick={toggle}>
-            <CloseIcon />
+        <SidebarContainer isOpen={isOpen}>
+            <Icon >
+            <CloseIcon onClick={toggle}/>
                 <aside className="block col-1">
       <h5>Cart Items</h5>
       <div>
@@ -22,6 +23,9 @@ const Cart =  (props) => {
         {cartItems.map((item) => (
           <div key={item.id} className="row">
             <div className="col-2">{item.name}</div>
+            <div className="col-2 text-right">
+              {item.qty} x ${item.price.toFixed(2)}
+            </div>
             <div className="col-2">
               <span onClick={() => onRemove(item)} className="remove">
                 -
@@ -30,9 +34,7 @@ const Cart =  (props) => {
                 +
               </span>
             </div>
-            <div className="col-2 text-right">
-              {item.qty} x ${item.price.toFixed(2)}
-            </div>
+            
           </div>
         ))}
 
@@ -51,11 +53,7 @@ const Cart =  (props) => {
           </>
         )}
       </div>
-      <div className="bottom">
-              <button className="checkout">
-                Checkout
-              </button>
-            </div>
+      <Example/>
     </aside>
             </Icon>
             {/* <div>Cart is Empty</div> */}
