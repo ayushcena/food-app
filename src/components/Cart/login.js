@@ -2,10 +2,22 @@ import React, { useState } from 'react';
 import { Container, Button, Alert } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 import './index.css';
+import Form from "react-bootstrap/Form";
+import Button1 from "react-bootstrap/Button";
 
 const Example=()=> {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
   return (
     <div style={{ paddingTop: '2rem' }}>
       {showButton && (
@@ -30,19 +42,12 @@ const Example=()=> {
         onExited={() => setShowButton(true)}
       >
         <Alert
-          variant="primary"
-          dismissible
+          // variant="primary"
+          // dismissible
           onClose={() => setShowMessage(false)}
         >
-          <Alert.Heading>
-            Animated alert message
-          </Alert.Heading>
-          <p>
-            This alert message is being transitioned in and
-            out of the DOM.
-          </p>
-          {/* <Button onClick={() => setShowMessage(false)}>
-          </Button> */}
+          <Button variant="primary" onClick={() => setShowMessage(false)}>Back to Cart
+          </Button>
         </Alert>
       </CSSTransition>
       </div>

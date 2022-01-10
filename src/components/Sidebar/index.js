@@ -6,6 +6,7 @@ import {
   SidebarMenu,
   SidebarLink,
 } from './SidebarElements';
+import './sidebar.css';
 
 const Sidebar = ({ isOpen, toggle }) => {
   return (
@@ -15,7 +16,7 @@ const Sidebar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarMenu>
         <SidebarLink>Pizzas</SidebarLink>
-        <SidebarLink to='/'>Desserts</SidebarLink>
+        <SidebarLink to='/'><a href="deserts" id="desert">Desserts</a></SidebarLink>
         <SidebarLink to='/'>Full Menu</SidebarLink>
       </SidebarMenu>
     </SidebarContainer>

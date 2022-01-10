@@ -9,10 +9,8 @@ import Otheradds from './Otheradds';
 const Addons = ({ pizza, toppings, others, setPopup }) => {
   return (
     <div className="container">
-      <div>
-        <h1 className="title">{pizza.name} HELLO</h1>
-      </div>
-      <div onClick={() => setPopup((state) => !state)}>X</div>
+        <span className="pizzatitle">{pizza.name} HELLO</span>
+      <span className="close" onClick={() => setPopup((state) => !state)}>X</span>
       <div > 
      {Sizes.map((e)=>{
        return (
@@ -33,8 +31,10 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
        <Info3 drink={f.drink} price={f.price}/>
      );})}
     </div>
-      <div>Total Cost</div>
-      <div>Price</div>
+    <div className="footer">
+      <span className="totalcost">Total Cost:</span>
+      <span className="totalprice">Price</span>
+    </div>  
     </div>
   );
 };
