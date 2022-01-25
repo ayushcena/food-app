@@ -1,4 +1,5 @@
 import "./addons.css";
+import React from 'react';
 import Sizes from "./Sizes";
 import Info from "./Info";
 import Info2 from "./Info2";
@@ -11,6 +12,22 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
   const [toppingsArr, setToppings] = useState([]);
   const [addons, setAddons] = useState([]);
   const [sizePizza, setSizePizza] = useState({});
+  console.log(toppingsArr,addons,sizePizza);
+  const [total,setTotal] = React.useState(0);
+  React.useEffect(()=>{
+    let op = 0;
+    let y = parseInt(sizePizza.price);
+    for (let i = 0; i < toppingsArr.length; i++) {
+      op += toppingsArr[i].price;
+    }
+    for(let i = 0; i < addons.length; i++) {
+      op += addons[i].price;
+    }
+    let k = parseInt(op);
+    setTotal(k+y);
+  },[sizePizza,toppingsArr,addons]);
+  // console.log(total);
+
   return (
     <div className="container">
       <span className="pizzatitle">{pizza.name} HELLO</span>
@@ -40,13 +57,13 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
       <div>
         {Otheradds.map((f) => {
           return (
-            <Info3 drink={f.drink} price={f.price} setAddons={setAddons} />
+            <Info3 drink={f.drink} price={f.price} setAddons={setAddons}/>
           );
         })}
       </div>
       <div className="footer">
         <span className="totalcost">Total Cost:</span>
-        <span className="totalprice">Price</span>
+        <span className="totalprice">{total}</span>
       </div>
     </div>
   );
