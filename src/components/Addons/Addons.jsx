@@ -1,5 +1,5 @@
 import "./addons.css";
-import React from 'react';
+import React from "react";
 import Sizes from "./Sizes";
 import Info from "./Info";
 import Info2 from "./Info2";
@@ -7,27 +7,29 @@ import Info3 from "./Info3";
 import Toppings from "./Toppings";
 import Otheradds from "./Otheradds";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Addons = ({ pizza, toppings, others, setPopup }) => {
   let truthful = false;
   const [toppingsArr, setToppings] = useState([]);
   const [addons, setAddons] = useState([]);
   const [sizePizza, setSizePizza] = useState({});
-  console.log(toppingsArr,addons,sizePizza);
-  const [total,setTotal] = React.useState(0);
-  React.useEffect(()=>{
+  console.log(toppingsArr, addons, sizePizza);
+  const [total, setTotal] = React.useState(0);
+  React.useEffect(() => {
     let op = 0;
     let y = parseInt(sizePizza.price);
     for (let i = 0; i < toppingsArr.length; i++) {
       op += toppingsArr[i].price;
     }
-    for(let i = 0; i < addons.length; i++) {
+    for (let i = 0; i < addons.length; i++) {
       op += addons[i].price;
     }
     let k = parseInt(op);
-    setTotal(k+y);
-  },[sizePizza,toppingsArr,addons]);
+    setTotal(k + y);
+  }, [sizePizza, toppingsArr, addons]);
   console.log(total);
+  useEffect(() => console.log(toppingsArr), [toppingsArr]);
 
   return (
     <div className="container">
@@ -38,13 +40,13 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
       <div>
         {Sizes.map((e) => {
           return (
-            <Info size={e.size}  price={e.price} setSizePizza={setSizePizza} />
+            <Info size={e.size} price={e.price} setSizePizza={setSizePizza} />
           );
         })}
       </div>
       <div className="toppingsHead">Add Toppings:</div>
       <div>
-        {Toppings.map((f,index) => {
+        {Toppings.map((f, index) => {
           return (
             <Info2
               topping={f.topping}
@@ -60,7 +62,7 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
       <div>
         {Otheradds.map((f) => {
           return (
-            <Info3 drink={f.drink} price={f.price} setAddons={setAddons}/>
+            <Info3 drink={f.drink} price={f.price} setAddons={setAddons} />
           );
         })}
       </div>
