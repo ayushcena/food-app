@@ -21,7 +21,7 @@ const data = {
   },
   {
     id: 2,
-    name: 'Hawaiian Paradise',
+    name: 'Hawaiian Paradise dsdsds swwedf fdfdfdfdf',
     desc: 'Marinara sauce, basil, italian sausage, roma tomatoes, olives, and pesto',
     price: 16.99,
     quantity: 1,

@@ -46,8 +46,8 @@ const Example=()=> {
           // dismissible
           onClose={() => setShowMessage(false)}
         >
-          <Button variant="primary" onClick={() => setShowMessage(false)}>Back to Cart
-          </Button>
+          <button variant="primary" onClick={() => setShowMessage(false)}>Back to Cart
+          </button>
         </Alert>
       </CSSTransition>
       </div>

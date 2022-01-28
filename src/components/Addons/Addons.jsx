@@ -26,7 +26,7 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
     let k = parseInt(op);
     setTotal(k+y);
   },[sizePizza,toppingsArr,addons]);
-  // console.log(total);
+  console.log(total);
 
   return (
     <div className="container">

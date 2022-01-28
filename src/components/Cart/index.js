@@ -15,18 +15,15 @@ const Cart =  (props) => {
     return (
         <SidebarContainer isOpen={isOpen}>
             <Icon >
-            <CloseIcon onClick={toggle}/>
+            <span className="closeicon" onClick={toggle}>X</span>
                 <aside className="block col-1">
-      <h5>Cart Items</h5>
-      <div>
-        {cartItems.length === 0 && <h6>Cart is empty</h6>}
+      <div className="carthead">Cart Items</div>
+      <div className="cartcontainer">
+        {cartItems.length === 0 && <div className="emptycart">Cart is empty</div>}
         {cartItems.map((item) => (
           <div key={item.id} className="row">
             <div className="col-2">{item.name}</div>
-            <div className="col-2 text-right">
-              {item.qty} x ${item.price.toFixed(2)}
-            </div>
-            <div className="col-2">
+            <div className="col-4">
               <span onClick={() => onRemove(item)} className="remove">
                 -
               </span>{' '}
@@ -34,6 +31,10 @@ const Cart =  (props) => {
                 +
               </span>
             </div>
+            <div className="col-3">
+              {item.qty} x ${item.price.toFixed(2)}
+            </div>
+            
             
           </div>
         ))}
@@ -41,13 +42,11 @@ const Cart =  (props) => {
         {cartItems.length !== 0 && (
           <>
             <hr></hr>
-            <div className="row">
-              <div className="col-2">
-                <strong>Total Price</strong>
-              </div>
-              <div className="col-1 text-right">
-                <b>${totalPrice.toFixed(2)}</b>
-              </div>
+            <div className="pricearea">
+                <span className="totalprice">Total Price:</span>
+              <span className="price">
+                {totalPrice.toFixed(2)}
+              </span>
             </div>
             <hr />
           </>
