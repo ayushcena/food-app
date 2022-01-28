@@ -15,15 +15,21 @@ function Info3(props) {
 
             <div
               className="panel panel-default card-input-2"
-              onClick={() =>
-                props.setAddons((addons) => [
-                  ...addons,
-                  {
-                    drink: props.drink,
-                    price: props.price,
-                  },
-                ])
-              }
+              onClick={() => {
+                props.array.map((item) => item.index).includes(props.index)
+                  ? props.setAddons((addons) =>
+                    addons.filter((item) => item.index !== props.index)
+                  )
+                  :
+                  props.setAddons((addons) => [
+                    ...addons,
+                    {
+                      drink: props.drink,
+                      price: props.price,
+                      index: props.index,
+                    },
+                  ])
+              }}
             >
               <span className="panel-body">{props.drink}</span>
               <span className="toppingprice">₹ {props.price}</span>

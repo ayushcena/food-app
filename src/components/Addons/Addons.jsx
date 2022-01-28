@@ -60,9 +60,9 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
       </div>
       <div className="otherAddsHead">Add Other Add-ons:</div>
       <div>
-        {Otheradds.map((f) => {
+        {Otheradds.map((f,index) => {
           return (
-            <Info3 drink={f.drink} price={f.price} setAddons={setAddons} />
+            <Info3 drink={f.drink} array={addons} index={index} price={f.price} setAddons={setAddons} />
           );
         })}
       </div>
