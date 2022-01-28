@@ -9,6 +9,7 @@ import Otheradds from "./Otheradds";
 import { useState } from "react";
 
 const Addons = ({ pizza, toppings, others, setPopup }) => {
+  let truthful = false;
   const [toppingsArr, setToppings] = useState([]);
   const [addons, setAddons] = useState([]);
   const [sizePizza, setSizePizza] = useState({});
@@ -37,18 +38,20 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
       <div>
         {Sizes.map((e) => {
           return (
-            <Info size={e.size} price={e.price} setSizePizza={setSizePizza} />
+            <Info size={e.size}  price={e.price} setSizePizza={setSizePizza} />
           );
         })}
       </div>
       <div className="toppingsHead">Add Toppings:</div>
       <div>
-        {Toppings.map((f) => {
+        {Toppings.map((f,index) => {
           return (
             <Info2
               topping={f.topping}
               price={f.price}
               setToppings={setToppings}
+              array={toppingsArr}
+              index={index}
             />
           );
         })}

@@ -2,6 +2,7 @@ import React from "react";
 import "./addons.css";
 
 function Info2(props) {
+
   return (
     <div className="sizecontainer">
       <div className="row">
@@ -21,9 +22,11 @@ function Info2(props) {
                   {
                     topping: props.topping,
                     price: props.price,
+                    index: props.index
                   },
                 ])
               }
+
             >
               <span className="panel-body">{props.topping}</span>
               <span className="toppingprice">₹ {props.price}</span>
