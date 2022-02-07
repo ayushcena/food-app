@@ -1,7 +1,6 @@
 div.container{
     position: fixed;
     z-index: 100;
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,21 +8,34 @@ div.container{
     /* left: 33vw; */
     left: 50%;
     transform: translate(-50%);
-    width: 460px;
+    width: 400px;
     height: 550px;
     overflow: scroll;
-    background-color: #ffffff;
+    background-color: #ffc500;
     color: #b90e28;
 }
     
     @media screen and (max-width: 400px) {
         div.container{
-            width: 100%;
+            width: 99%;
         }
-      };
+      }
+
+.close{
+    cursor: pointer;
+    margin-right:345px;
+    margin-top: -50px;
+    color: black;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
 .pizzatitle{
-    color: blue;
+    margin-top: 5px;
+    font-size: 23px;
+    margin-left: 10px;
 }
 
 h1.title{
@@ -36,7 +48,7 @@ div.pizzasize{
     padding-top: 8px;
     padding-bottom: 8px;
     margin:10px;
-    width:420px;
+    width:350px;
     border-radius:20px;
     font-size: 18px;
     color: rgb(56, 52, 52);
@@ -51,7 +63,7 @@ div.topping{
     padding-top: 8px;
     padding-bottom: 8px;
     margin:10px;
-    width:420px;
+    width:320px;
     /* border-radius:20px; */
     font-size: 18px;
     color: rgb(56, 52, 52);
@@ -63,22 +75,19 @@ span.toppingprice{
 }
 div.toppingsHead{
     font-size: 23px;
-    margin-left: -61%;
+    margin-left: -50%;
 }
 div.otherAddsHead{
     font-size: 23px;
-    margin-left: -47%;
+    margin-left: -36%;
 }
 /**
   Default Markup
 **/
 
-body {
-    background: #F0E5E1 ;
-  }
   
   .sizecontainer {
-    max-width: 900px;
+    max-width: 380px;
     /* margin: 0 auto; */
   }
   
@@ -87,24 +96,22 @@ body {
     Component
   **/
   
-  label {
-      /* width: 420px; */
-  }
-  
   .card-input-element {
       display: none;
   }
   
   .card-input {
       margin: 5px;
-      width:420px;
-      border:1px solid rgba(0, 0, 0, 0.212);
+      width:370px;
+      /* border:1px solid rgba(0, 0, 0, 1); */
       border-radius:20px;
       padding-left: 30px;
       padding-top: 8px;
       padding-bottom: 8px;
       font-size: 18px;
-    color: rgb(56, 52, 52);
+      color: rgb(0, 0, 0,0.822);
+      background-color: #fcf3c3;
+      box-shadow: 2px 1px 3px #00000052;
   }
   
   .card-input:hover {
@@ -113,18 +120,22 @@ body {
   
   .card-input-element:checked + .card-input {
        box-shadow: 0 0 1px 1px #2ecc71;
-       background-color: #d4ebde;
+       background-color: #99f8c2;
+       border-color: #2ecc71;
+       box-shadow: -4px 3px 3px #00000052;
    }
 
    .card-input-2 {
     margin: 5px;
-    width:420px;
-    border:1px solid rgba(0, 0, 0, 0.212);
+    width:370px;
+    /* border:1px solid rgba(0, 0, 0, 1); */
     padding-left: 30px;
     padding-top: 8px;
     padding-bottom: 8px;
     font-size: 18px;
-    color: rgb(56, 52, 52);
+    color: rgba(0, 0, 0, 0.822);
+    background-color: #fcf3c3;
+    box-shadow: 2px 1px 3px #00000052;
 }
 
 .card-input-2:hover {
@@ -132,23 +143,25 @@ body {
 }
 
 .card-input-element:checked + .card-input-2 {
-     box-shadow: 0 0 1px 1px #2ecc71;
-     background-color: #d4ebde;
+    box-shadow: 0 0 1px 1px #2ecc71;
+    background-color: #99f8c2;
+    border-color: #2ecc71;
+    box-shadow: -4px 3px 3px #00000052;
  }
 .totalcost{
     font-size: 22px;
     font-weight: 700;
 }
 .totalprice{
-    padding-left: 5px;
+    padding-left: 17px;
     margin-top: -28px;
     font-size: 22px;
     /* margin-bottom: 40px; */
 }
 .footer{
-    background-color: rgb(177, 174, 175);
-    padding-right: 260px;
-    padding-left: 15px;
+    background-color: rgb(255, 254, 208);
+    padding-right: 170px;
+    padding-left: 10px;
     position:fixed;
-    bottom:-500px;
+    margin-top: 1200px;
 }

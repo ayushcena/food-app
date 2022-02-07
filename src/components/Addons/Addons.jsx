@@ -9,7 +9,7 @@ import Otheradds from "./Otheradds";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const Addons = ({ pizza, toppings, others, setPopup }) => {
+const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, onAdd }) => {
   let truthful = false;
   const [toppingsArr, setToppings] = useState([]);
   const [addons, setAddons] = useState([]);
@@ -33,8 +33,8 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
 
   return (
     <div className="container">
-      <span className="pizzatitle">{pizza.name} HELLO</span>
-      <span className="close" onClick={() => setPopup((state) => !state)}>
+      <span className="pizzatitle">{pizza.name}</span>
+      <span className="close" onClick={() => setPopup(() => -1)}>
         X
       </span>
       <div>
@@ -68,8 +68,13 @@ const Addons = ({ pizza, toppings, others, setPopup }) => {
       </div>
       <div className="footer">
         <span className="totalcost">Total Cost:</span>
-        <span className="totalprice">{total}</span>
+        <span className="totalprice">₹{total}</span>
+        <button onClick={() => {
+          setAddonPrice(total);
+          onAdd(pizza)
+        }}>add to cart</button>
       </div>
+
     </div>
   );
 };

@@ -20,19 +20,24 @@ h3 {
 } */
 .closeicon{
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 20px;
   font-size: 30px;
   font-weight: 700;
   font-family:Arial, Helvetica, sans-serif;
+}
+.emptycart{
+  margin-right: 135px;
+  margin-left:50px;
 }
 .carthead{
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-weight: bold;
   font-size: 30px;
+  margin-left: 20px;
 }
 .cartcontainer{
   margin-top: 10px;
-  /* margin-left: -10px; */
+  margin-left: 20px;
 }
 .row {
   display: flex;
@@ -43,7 +48,7 @@ h3 {
 }
 .col-1 {
   flex: 1;
-  margin-right: 15px;
+  margin-right: 5px;
 }
 .col-2 {
   flex: 0.6;
@@ -52,11 +57,18 @@ h3 {
 }
 .col-3 {
   font-size: 14px;
-  margin-right: 50px;
+  margin-right: 45px;
 }
 .block {
   padding: 0.8rem;
   border-radius: 0.5rem;
+}
+hr.line{
+  margin-left:-19px;
+  width: 382px;
+}
+hr.lowerline{
+  margin-bottom: -30px;
 }
 .text-right {
   text-align: right;
@@ -64,12 +76,14 @@ h3 {
 }
 .totalprice{
   font-weight: bold;
-  font-size: 45px;
+  font-size: 25px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-left: -15px;
 }
 .price{
   margin-left: 150px;
   font-size: 25px;
+  font-weight: 700;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 /* img.small {
@@ -97,16 +111,16 @@ h3 {
   margin-left: 2rem;
 } */
 .col-4{
-  margin-top: -20px;
+  margin-top: -15px;
   /* flex: 0.3; */
 }
 
 .remove{
   cursor: pointer;
   background-color: #e31837;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 15px;
+  padding-left: 5.9px;
+  padding-right: 5.9px;
+  font-size: 19px;
   padding-top: -10px;
   font-weight: bold;
   /* font-family: sans-serif; */
@@ -116,9 +130,12 @@ h3 {
   cursor: pointer;
   padding-left: 5px;
   padding-right: 5px;
-  font-size: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 20px;
   font-weight: bold;
   font-family: sans-serif;
+  margin-left: 3px;
 }
 /* button.badge {
   background-color: #f04040;
@@ -126,41 +143,46 @@ h3 {
   color: #ffffff;
   width: 1.5rem;
 } */
+.bottom{
+  position: relative;
+  /* background-color: white; */
+  padding-left:235px;
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  width:390px;
+  z-index: 10;
+  margin-right: 22px;
+  margin-top:15px;
+  /* overflow: hidden; */
+}
 .checkout{
   font-size: 1.1rem;
-  padding: 0.65rem 1.3rem;
+  padding: 0.55rem 1rem;
   border: none;
   border-radius: 10px;
   background: #e31837;
   color: #fff;
   transition: 0.2 ease-out;
   display: flex;
+  margin-left: 25px;
   flex-direction: row;
+  box-shadow: 2px 3px 3px #00000052;
 }
 .checkout:hover{
-    background: rgb(17, 167, 17);
+    background: rgb(255, 255, 255);
     transition: 0.2s ease-out;
     cursor: pointer;
-    color: #000;
+    color: #e31837;
+    box-shadow: 2px 0px 3px #00000052;
 }
-.bottom{
-  position: relative;
-  background-color: white;
-  padding-left:230px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  width:420px;
-  z-index: 10;
-  margin-right: -5px;
-  /* overflow: hidden; */
-}
+
 .alert{
-  margin-right: 320px;
+  margin-right:180px;
 }
 .alert-enter {
   opacity: 0;
   transform: scale(0.9);
-  margin-right: 320px;
+  margin-right: 180px;
 }
 .alert-enter-active {
   opacity: 1;
@@ -174,6 +196,60 @@ h3 {
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
+}
+.backtocart{
+  margin-bottom: 20px;
+  margin-left: 20px;
+  background-color: #e31837;
+  color: #fff;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border:0px;
+  border-radius: 5px;
+  box-shadow: -2px 0px 3px #00000052;
+}
+.backtocart:hover{
+  background: rgb(255, 255, 255);
+  transition: 0.2s ease-out;
+  cursor: pointer;
+  color: #e31837;
+  box-shadow: -1.5px 1.5px 3px #00000052;
+}
+.mobno{
+  font-size:23px;
+  margin-left:20px;
+  /* margin-top: -20px; */
+  margin-bottom: -47px;
+  margin-right: -200px; 
+}
+.mobbox{
+  margin-left:190px;
+  margin-right: -122px;
+  margin-bottom: -60px;
+}
+.placeorder{
+  margin-left: 150px;
+  background-color: #e31837;
+  color: #fff;
+  cursor: pointer;
+  border:0px;
+  font-size: 17px;
+  margin-right: -40px;
+  padding-right: 9px;
+  padding-left: 9px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 8px;
+}
+.placeorder:hover{
+  background: rgb(172, 255, 116);
+  transition: 0.2s ease-out;
+  cursor: pointer;
+  color: #e31837;
+  box-shadow: -1.5px 1.5px 3px #00000052;
 }
 @media all and (min-width: 480px) {
   .Login {

@@ -9,8 +9,14 @@ import Example from './login';
 
 
 const Cart =  (props) => {
-  const { cartItems, onAdd, onRemove, isOpen, toggle } = props;
-  const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
+  const { cartItems, onAdd, onRemove, isOpen, toggle, addOnPrice } = props;
+  // const itemsPrice = addOnPrice ? addOnPrice : cartItems.reduce((a, c) => a + c.qty *c.price, 0)
+  const itemsPrice= cartItems.reduce((a, c) => {
+    if(addOnPrice){
+      c.price= addOnPrice
+    }
+    return a + c.qty * c.price;
+  }, 0) ;
   const totalPrice = itemsPrice;
     return (
         <SidebarContainer isOpen={isOpen}>
@@ -32,7 +38,7 @@ const Cart =  (props) => {
               </span>
             </div>
             <div className="col-3">
-              {item.qty} x ${item.price.toFixed(2)}
+              {item.qty} x ₹{item.price.toFixed(2)}
             </div>
             
             
@@ -41,19 +47,23 @@ const Cart =  (props) => {
 
         {cartItems.length !== 0 && (
           <>
-            <hr></hr>
+            <hr className="line"></hr>
             <div className="pricearea">
                 <span className="totalprice">Total Price:</span>
               <span className="price">
-                {totalPrice.toFixed(2)}
+              ₹{totalPrice.toFixed(2)}
               </span>
             </div>
-            <hr />
+            <hr className="line lowerline"></hr>
           </>
         )}
       </div>
-      <Example/>
-    </aside>
+      {cartItems.length !== 0 && (
+              <Example/>  
+        )}
+      </aside>
+      
+    
             </Icon>
             {/* <div>Cart is Empty</div> */}
         </SidebarContainer>

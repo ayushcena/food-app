@@ -16,6 +16,7 @@ import Products from '../Products';
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpens, setIsCartOpens] = useState(false);
+  const [addonPrice, setAddonPrice] = useState(0);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -58,6 +59,7 @@ const Hero = () => {
       <Navbar toggle={toggle} toggleCart={toggleCart} />
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Cart isOpen={isCartOpens} toggle={toggleCart} cartItems={cartItems}
+      addOnPrice={addonPrice}
           onAdd={onAdd}
           onRemove={onRemove}/>
       <HeroContent>
@@ -66,7 +68,7 @@ const Hero = () => {
           <HeroP>NEVER ENDING PIZZA-BILITIES</HeroP>
         </HeroItems>
       </HeroContent>
-      <Products heading='Comfort Combos' data={data.productData} products={products} onAdd={onAdd}/>
+      <Products heading='Comfort Combos' data={data.productData} products={products} onAdd={onAdd} setCartItems={setCartItems} cartItems={cartItems} addonPrice={addonPrice} setAddonPrice={setAddonPrice}/>
       <Products heading='Desert' data={data.productDataTwo} products={products} onAdd={onAdd}/>
       <Footer />
     </HeroContainer>

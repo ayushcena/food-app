@@ -4,8 +4,9 @@ import { CSSTransition } from 'react-transition-group';
 import './index.css';
 import Form from "react-bootstrap/Form";
 import Button1 from "react-bootstrap/Button";
+import axios from 'axios';
 
-const Example=()=> {
+const Example = () => {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const [email, setEmail] = useState("");
@@ -13,6 +14,17 @@ const Example=()=> {
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
+  }
+  async function placeOrder() {
+    try {
+      await axios.get("https://api.eatx.in/api/food_order").then((response) => {
+        console.log(response);
+      }).catch(err => {
+        console.log(err);
+      })
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function handleSubmit(event) {
@@ -28,10 +40,10 @@ const Example=()=> {
         //   Show Message
         // </Button>
         <div className="bottom">
-        <button className="checkout" onClick={() => setShowMessage(true)}>
-          Checkout
-        </button>
-      </div>
+          <button className="checkout" onClick={() => setShowMessage(true)}>
+            Checkout
+          </button>
+        </div>
       )}
       <CSSTransition
         in={showMessage}
@@ -46,11 +58,16 @@ const Example=()=> {
           // dismissible
           onClose={() => setShowMessage(false)}
         >
-          <button variant="primary" onClick={() => setShowMessage(false)}>Back to Cart
+          <button className="backtocart" onClick={() => setShowMessage(false)}>Back to Cart
           </button>
+          <form>
+            <div class="mobno">Mobile Number:</div>
+            <input type="tel" class="mobbox" name="contactno" pattern="[0-9]{10}" required></input>
+            <button type="submit" className="placeorder" id="submitForm" onClick={placeOrder}>Place Order</button>
+          </form>
         </Alert>
       </CSSTransition>
-      </div>
+    </div>
   );
 }
 export default Example;
