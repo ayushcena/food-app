@@ -25,8 +25,9 @@ const Cart = (props) => {
   React.useEffect(()=>{
     let total = 0;
     for (let i = 0; i < cartItem.length; i++) {
-      setTotalPrice1(total + cartItem[i].totalPrice);
+      console.log(cartItem);
       total += cartItem[i].totalPrice;
+      setTotalPrice1(total);
     }
     (Math.round(totalPrice1 * 100) / 100).toFixed(2)
   },[cartItem]);
