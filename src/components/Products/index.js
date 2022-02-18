@@ -12,9 +12,13 @@ import {
   ProductPrice,
   ProductButton,
 } from "./ProductsElements";
+import {addItemToCart} from '../../store/cartSlice';
+import { useDispatch } from "react-redux";
 
 const Products = ({ heading, data, onAdd, onAddForAddons,setAddonPrice, addonPrice,setCartItems, cartItems }) => {
   const [popup, setPopup] = useState(-1);
+  const [quantity,setQuantity] = useState(1);
+  const dispatch = useDispatch();
   return (
     <>
       <ProductsContainer>
@@ -31,7 +35,7 @@ const Products = ({ heading, data, onAdd, onAddForAddons,setAddonPrice, addonPri
                   <ProductPrice> {product.price} </ProductPrice>
                   {product.category==='addon'? <ProductButton onClick={() => setPopup(index)}>
                     {product.button}
-                  </ProductButton>:<ProductButton onClick={() => onAdd(product)}>
+                  </ProductButton>:<ProductButton onClick={() => dispatch(addItemToCart({product,quantity}))}>
                     {product.button}
                   </ProductButton>}
                 </ProductInfo>

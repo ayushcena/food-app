@@ -21,7 +21,6 @@ export const SidebarContainer = styled.aside`
 export const Icon = styled.div`
   position: absolute;
   top: 0.7rem;
-  right: -3rem;
   background: transparent;
   border: transparent;
   font-size: 2rem;

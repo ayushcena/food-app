@@ -27,9 +27,11 @@ function Info3(props) {
                       drink: props.drink,
                       price: props.price,
                       index: props.index,
+                      quantity: props.quantity,
+                      productId: props.productId,
                     },
                   ])
-              }}
+              }} 
             >
               <span className="panel-body">{props.drink}</span>
               <span className="toppingprice">₹ {props.price}</span>

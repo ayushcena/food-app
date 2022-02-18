@@ -155,6 +155,9 @@ hr.lowerline{
   margin-top:15px;
   /* overflow: hidden; */
 }
+.brder{
+  border: 2px dotted black;
+}
 .checkout{
   font-size: 1.1rem;
   padding: 0.55rem 1rem;

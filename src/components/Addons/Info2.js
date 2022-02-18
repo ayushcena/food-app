@@ -22,9 +22,10 @@ function Info2(props) {
                     )
                   : props.setToppings((tops) => [
                       ...tops,
-                      {
+                      { 
                         topping: props.topping,
                         price: props.price,
+                        productId: props.productId,
                         index: props.index,
                       },
                     ]);

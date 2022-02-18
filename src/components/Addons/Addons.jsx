@@ -8,13 +8,14 @@ import Toppings from "./Toppings";
 import Otheradds from "./Otheradds";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import {useDispatch} from 'react-redux';
+import {pizzaSize} from '../../store/cartSlice';
 const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, onAdd }) => {
   let truthful = false;
   const [toppingsArr, setToppings] = useState([]);
   const [addons, setAddons] = useState([]);
   const [sizePizza, setSizePizza] = useState({});
-  console.log(toppingsArr, addons, sizePizza);
+  const dispatch = useDispatch();
   const [total, setTotal] = React.useState(0);
   React.useEffect(() => {
     let op = 0;
@@ -28,8 +29,6 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
     let k = parseInt(op);
     setTotal(k + y);
   }, [sizePizza, toppingsArr, addons]);
-  console.log(total);
-  useEffect(() => console.log(toppingsArr), [toppingsArr]);
 
   return (
     <div className="container">
@@ -40,7 +39,7 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
       <div>
         {Sizes.map((e) => {
           return (
-            <Info size={e.size} price={e.price} setSizePizza={setSizePizza} />
+            <Info productId={e.productId} size={e.size} quantity={e.quantity} name={e.name} price={e.price} setSizePizza={setSizePizza} />
           );
         })}
       </div>
@@ -53,6 +52,7 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
               price={f.price}
               setToppings={setToppings}
               array={toppingsArr}
+              productId={f.productId}
               index={index}
             />
           );
@@ -62,7 +62,7 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
       <div>
         {Otheradds.map((f,index) => {
           return (
-            <Info3 drink={f.drink} array={addons} index={index} price={f.price} setAddons={setAddons} />
+            <Info3 productId={f.productId} drink={f.drink} quantity={f.quantity} array={addons} index={index} price={f.price} setAddons={setAddons} />
           );
         })}
       </div>
@@ -70,8 +70,7 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
         <span className="totalcost">Total Cost:</span>
         <span className="totalprice">₹{total}</span>
         <button onClick={() => {
-          setAddonPrice(total);
-          onAdd(pizza)
+          dispatch(pizzaSize({toppingsArr,sizePizza,addons}));
         }}>add to cart</button>
       </div>
 

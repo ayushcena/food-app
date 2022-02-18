@@ -1,16 +1,21 @@
-const Otheradds=[
+const Otheradds = [
     {
-        drink:'Diet Coke',
-        price:50
+        productId: "10",
+        drink: 'Diet Coke',
+        price: 50,
+        quantity: 1,
     },
     {
-        drink:'Sprite',
-        price:50
+        productId: "11",
+        drink: 'Sprite',
+        price: 50,
+        quantity: 1,
     },
     {
-        drink:'Thumps Up',
-        price:50
+        productId: "12",
+        drink: 'Thumps Up',
+        price: 50,
+        quantity: 1,
     },
-    ]
-    export default Otheradds;
-    
+]
+export default Otheradds;
