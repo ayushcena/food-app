@@ -32,6 +32,7 @@ const Cart = (props) => {
       }
       (Math.round(totalPrice1 * 100) / 100).toFixed(2)
     }
+    // console.log(cartItem);
   },[cartItem]);
   return (
     <SidebarContainer isOpen={isOpen}>

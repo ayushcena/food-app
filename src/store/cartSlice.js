@@ -30,21 +30,64 @@ export const slice = createSlice({
         },
         RemoveItemToCart: (state, action) => {
             console.log(action.payload);
-            for (let i = 0; i < state.cartItems.length; i++) {
-                if (state.cartItems[i].productId === action.payload.productId) {
-                    state.cartItems[i].quantity -= 1;
-                    state.cartItems[i].totalPrice -= action.payload.price;
-                    console.log(state.cartItems[i].totalPrice);
-                    break;
+            let truth = 0;
+            let si = 0;
+            if(action.payload.topping){
+                for (let i = 0; i < state.cartItems.length; i++) {
+                    if (state.cartItems[i].productId === action.payload.productId) {
+                        si = i;
+                        if(state.cartItems[i].topping.length === action.payload.topping.length){
+                            for (let j = 0; j < state.cartItems[i].topping.length; j++){
+                                if(state.cartItems[i].topping[j] === action.payload.topping[j]){
+                                    truth++;
+                                }
+                            }
+                            if(truth === state.cartItems[i].topping.length && truth === action.payload.topping.length){
+                                state.cartItems[si].quantity -= 1;
+                                state.cartItems[si].totalPrice -= action.payload.price;                                   
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                for (let i = 0; i < state.cartItems.length; i++) {
+                    if (state.cartItems[i].productId === action.payload.productId) {
+                        state.cartItems[i].quantity -= 1;
+                        state.cartItems[i].totalPrice -= action.payload.price;
+                        break;
+                    }
                 }
             }
         }, addItemToCartSpecified: (state, action) => {
             console.log(action.payload);
-            for (let i = 0; i < state.cartItems.length; i++) {
-                if (state.cartItems[i].productId === action.payload.productId) {
-                    state.cartItems[i].quantity += 1;
-                    state.cartItems[i].totalPrice += action.payload.price;
-                    break;
+            let truth = 0;
+            let si = 0;
+            if(action.payload.topping){
+                for (let i = 0; i < state.cartItems.length; i++) {
+                    if (state.cartItems[i].productId === action.payload.productId) {
+                        si = i;
+                        if(state.cartItems[i].topping.length === action.payload.topping.length){
+                            for (let j = 0; j < state.cartItems[i].topping.length; j++){
+                                if(state.cartItems[i].topping[j] === action.payload.topping[j]){
+                                    truth++;
+                                }
+                            }
+                            if(truth === state.cartItems[i].topping.length && truth === action.payload.topping.length){
+                                state.cartItems[si].quantity += 1;
+                                state.cartItems[si].totalPrice += action.payload.price;                                   
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                for (let i = 0; i < state.cartItems.length; i++) {
+                    if (state.cartItems[i].productId === action.payload.productId) {
+                        state.cartItems[i].quantity += 1;
+                        state.cartItems[i].totalPrice += action.payload.price;
+                        break;
+                    }
                 }
             }
         }, pizzaSize: (state, action) => {
@@ -53,7 +96,7 @@ export const slice = createSlice({
             for (let i = 0; i < action.payload.addons.length; i++) {
                 priceofAddons += action.payload.addons[i].price;
             }
-            if (action.payload.sizePizza.size !== undefined || action.payload.sizePizza.size !== null) {
+            if (action.payload.sizePizza.size !== undefined && action.payload.sizePizza.name && action.payload.sizePizza.size !== null) {
                 let priceOfPizza = 0;
                 let xyz = [];
                 for (let i = 0; i < action.payload.toppingsArr.length; i++) {
@@ -64,6 +107,7 @@ export const slice = createSlice({
                 priceOfPizza = parseInt(priceOfPizza);
                 let quantity = parseInt(action.payload.sizePizza.quantity)
                 state.cartItems.push({
+                    productId: action.payload.sizePizza.productId,
                     size: action.payload.sizePizza.size,
                     price: priceOfPizza,
                     name: action.payload.sizePizza.name,
@@ -72,22 +116,31 @@ export const slice = createSlice({
                     totalPrice: priceOfPizza * action.payload.sizePizza.quantity
                 });
             }
-
-            for (var i = 0; i < action.payload.addons.length; i++) {
-                state.cartItems.push({
-                    name: action.payload.addons[i].drink,
-                    price: action.payload.addons[i].price,
-                    quantity: action.payload.addons[i].quantity,
-                    totalPrice: action.payload.addons[i].price * action.payload.addons[i].quantity,
-                    productId: action.payload.addons[i].productId
-                })
+            var mo = false;
+            var index = 0;
+            for (let j = 0; j < state.cartItems.length; j++) {
+                for (var i = 0; i < action.payload.addons.length; i++) {
+                    if (action.payload.addons[i].drink === state.cartItems[j].name) {
+                        mo = true;
+                        index = j;
+                        break;
+                    }
+                }
             }
-
-            // state.cartItems[state.cartItems.length - 1].totalPrice += action.payload.price;
-        }, topping: (state, action) => {
-            console.log(action.payload);
-        }, addons: (state, action) => {
-            console.log(action.payload);
+            if (!mo) {
+                for (let i = 0; i < action.payload.addons.length; i++) {
+                    state.cartItems.push({
+                        name: action.payload.addons[i].drink,
+                        price: action.payload.addons[i].price,
+                        quantity: action.payload.addons[i].quantity,
+                        totalPrice: action.payload.addons[i].price * action.payload.addons[i].quantity,
+                        productId: action.payload.addons[i].productId
+                    })
+                }
+            } else {
+                state.cartItems[index].totalPrice += state.cartItems[index].price;
+                state.cartItems[index].quantity += 1;
+            }
         }
     }
 })

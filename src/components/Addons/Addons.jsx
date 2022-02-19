@@ -20,12 +20,10 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
   React.useEffect(() => {
     let op = 0;
     let y = 0;
-    console.log(sizePizza);
+    // console.log(sizePizza);
     if(sizePizza.quantity) {
       y = sizePizza.price;
     }
-    console.log(sizePizza);
-    console.log(y);
     for (let i = 0; i < toppingsArr.length; i++) {
       op += toppingsArr[i].price;
     }
