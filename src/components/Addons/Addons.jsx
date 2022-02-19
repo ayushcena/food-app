@@ -21,20 +21,18 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
     let op = 0;
     let y = 0;
     console.log(sizePizza);
-    if(sizePizza.length > 0) {
+    if(sizePizza.quantity) {
       y = sizePizza.price;
     }
+    console.log(sizePizza);
     console.log(y);
     for (let i = 0; i < toppingsArr.length; i++) {
-      console.log(toppingsArr[i]);
       op += toppingsArr[i].price;
     }
     for (let i = 0; i < addons.length; i++) {
-      console.log(addons[i]);
       op += addons[i].price;
     }
     let k = parseInt(op);
-    console.log(op,y);
     setTotal(k + y);
   }, [sizePizza, toppingsArr, addons]);
 

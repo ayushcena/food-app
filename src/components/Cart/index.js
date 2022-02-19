@@ -23,13 +23,15 @@ const Cart = (props) => {
   const cartItem = useSelector(getCartItems);
   let totalprice = 0;
   React.useEffect(()=>{
-    let total = 0;
-    for (let i = 0; i < cartItem.length; i++) {
-      console.log(cartItem);
-      total += cartItem[i].totalPrice;
-      setTotalPrice1(total);
+    if(cartItem.length > 0){
+      let total = 0;
+      for (let i = 0; i < cartItem.length; i++) {
+        console.log(cartItem);
+        total += cartItem[i].totalPrice;
+        setTotalPrice1(total);
+      }
+      (Math.round(totalPrice1 * 100) / 100).toFixed(2)
     }
-    (Math.round(totalPrice1 * 100) / 100).toFixed(2)
   },[cartItem]);
   return (
     <SidebarContainer isOpen={isOpen}>

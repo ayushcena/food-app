@@ -53,7 +53,7 @@ export const slice = createSlice({
             for (let i = 0; i < action.payload.addons.length; i++) {
                 priceofAddons += action.payload.addons[i].price;
             }
-            if (action.payload.sizePizza.length > 0) {
+            if (action.payload.sizePizza.size !== undefined || action.payload.sizePizza.size !== null) {
                 let priceOfPizza = 0;
                 let xyz = [];
                 for (let i = 0; i < action.payload.toppingsArr.length; i++) {
