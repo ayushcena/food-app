@@ -12,33 +12,65 @@ import {
   ProductPrice,
   ProductButton,
 } from "./ProductsElements";
-import {addItemToCart} from '../../store/cartSlice';
+import { addItemToCart } from "../../store/cartSlice";
 import { useDispatch } from "react-redux";
 
-const Products = ({ heading, data, onAdd, onAddForAddons,setAddonPrice, addonPrice,setCartItems, cartItems }) => {
+const Products = ({
+  heading,
+  products,
+  onAdd,
+  setAddonPrice,
+  addonPrice,
+  setCartItems,
+  cartItems,
+}) => {
   const [popup, setPopup] = useState(-1);
-  const [quantity,setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  console.log(products);
   //const [data2, setdata2] = useState(-1);
   return (
     <>
       <ProductsContainer>
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
-          {data.map((product, index) => {
+          {products.map((product, index) => {
             return (
               <ProductCard key={index} onAdd={onAdd}>
-              {popup!=-1 ? <Addons pizza={data[popup]} setPopup={setPopup} addonPrice={addonPrice} setAddonPrice={setAddonPrice} onAdd={onAdd} setCartItems={setCartItems} cartItems={cartItems}/> : false}
-                <ProductImg src={product.img} alt={product.alt} />
+                {popup != -1 ? (
+                  <Addons
+                    pizza={products[popup]}
+                    setPopup={setPopup}
+                    addonPrice={addonPrice}
+                    setAddonPrice={setAddonPrice}
+                    onAdd={onAdd}
+                    setCartItems={setCartItems}
+                    cartItems={cartItems}
+                  />
+                ) : (
+                  false
+                )}
+                <ProductImg
+                  src={product.pic4mob}
+                  alt={product.item_data.name}
+                />
                 <ProductInfo>
                   <ProductTitle> {product.name} </ProductTitle>
-                  <ProductDesc> {product.desc} </ProductDesc>
-                  <ProductPrice> {product.price} </ProductPrice>
-                  {product.category==='addon'? <ProductButton onClick={() => setPopup(index)}>
-                    {product.button}
-                  </ProductButton>:<ProductButton onClick={() => dispatch(addItemToCart({product,quantity}))}>
-                    {product.button}
-                  </ProductButton>}
+                  <ProductDesc> {product.item_data.description} </ProductDesc>
+                  <ProductPrice> {product.cost} </ProductPrice>
+                  {product.category === "addon" ? (
+                    <ProductButton onClick={() => setPopup(index)}>
+                      Add to Cart
+                    </ProductButton>
+                  ) : (
+                    <ProductButton
+                      onClick={() =>
+                        dispatch(addItemToCart({ product, quantity }))
+                      }
+                    >
+                      Add to Cart
+                    </ProductButton>
+                  )}
                 </ProductInfo>
               </ProductCard>
             );

@@ -1,4 +1,4 @@
-[
+const data = [
   {
     category: "COMFORT COMBOS",
     items: [
