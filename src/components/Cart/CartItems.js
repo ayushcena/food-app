@@ -13,13 +13,20 @@ const CartItems = ({cartItem}) => {
         console.log("---");
     }
     return (
-        <div className="brder">
-            <div>
-                <b>Name: {cartItem.name}</b><br />
-                <b>Quantity: <button onClick={increase}>+</button>{cartItem.quantity}<button onClick={decrease}>-</button></b><br />
-                <b>Price: {cartItem.totalPrice}</b><br />
+        <div className="row">
+            <div className="col-2">{cartItem.name}</div>
+                <div className="col-4">
+              <span onClick={decrease} className="remove">
+                -
+              </span>{' '}
+              <span onClick={increase} className="add">
+                +
+              </span>
             </div>
-        </div>
+            <div className="col-3">
+            {cartItem.quantity} x ₹{cartItem.totalPrice.toFixed(2)}
+            </div>
+            </div>
     )
 }
 

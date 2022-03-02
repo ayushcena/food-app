@@ -19,6 +19,7 @@ const Products = ({ heading, data, onAdd, onAddForAddons,setAddonPrice, addonPri
   const [popup, setPopup] = useState(-1);
   const [quantity,setQuantity] = useState(1);
   const dispatch = useDispatch();
+  //const [data2, setdata2] = useState(-1);
   return (
     <>
       <ProductsContainer>

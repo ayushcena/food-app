@@ -29,6 +29,7 @@ const data = {
         ' Marinara sauce, basil, italian sausage, roma tomatoes, olives, and pesto',
       price: 14.99,
       quantity: 1,
+      category: 'addon',
       button: 'Add to Cart'
     },
     {

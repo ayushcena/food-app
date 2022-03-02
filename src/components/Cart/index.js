@@ -9,6 +9,7 @@ import './index.css';
 import Example from './login';
 import {getCartItems} from '../../store/cartSlice';
 import GivenItems from './CartItems';
+import axios from 'axios';
 const Cart = (props) => {
   const { cartItems, onAdd, onRemove, isOpen, toggle, addOnPrice } = props;
   // const itemsPrice = addOnPrice ? addOnPrice : cartItems.reduce((a, c) => a + c.qty *c.price, 0)
@@ -34,6 +35,18 @@ const Cart = (props) => {
     }
     // console.log(cartItem);
   },[cartItem]);
+  async function placeOrder() {
+    try {
+      await axios.get("https://api.eatx.in/api/v3/item/items/130/?key=tcd").then((response) => {
+        console.log(response.data);
+      }).catch(err => {
+        console.log(err);
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <SidebarContainer isOpen={isOpen}>
       <Icon >
@@ -41,6 +54,7 @@ const Cart = (props) => {
         <aside className="block col-1">
           <div className="carthead">Cart Items</div>
           <div className="cartcontainer">
+          {cartItem.length === 0 && <div className="emptycart">Cart is empty</div>}
             {cartItem.map((item) =>{
               console.log(item);
               if(item.quantity > 0){
@@ -49,10 +63,25 @@ const Cart = (props) => {
                 )
               }
             })}
-            <h2>Total Price : {totalPrice1}</h2>
+            {cartItem.length !== 0 && (
+          <>
+            <hr className="line"></hr>
+            <div className="pricearea">
+                <span className="totalprice">Total Price:</span>
+              <span className="price">
+              ₹{totalPrice1.toFixed(2)}
+              </span>
+            </div>
+            <hr className="line lowerline"></hr>
+          </>
+        )}
           </div>
+          {cartItem.length !== 0 && (
+              <Example/>  
+        )}
         </aside>
       </Icon>
+      <button onClick={placeOrder}>HI</button>
     </SidebarContainer>
 
   );
