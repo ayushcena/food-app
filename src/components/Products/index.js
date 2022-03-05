@@ -52,13 +52,13 @@ const Products = ({
                 )}
                 <ProductImg
                   src={product.pic4mob}
-                  alt={product.item_data.name}
+                  // alt={product.item_data.name}
                 />
                 <ProductInfo>
-                  <ProductTitle> {product.name} </ProductTitle>
+                  <ProductTitle> {product.item_data.name} </ProductTitle>
                   <ProductDesc> {product.item_data.description} </ProductDesc>
                   <ProductPrice> {product.cost} </ProductPrice>
-                  {product.category === "addon" ? (
+                  {(product.extras!==undefined && product.extras!==null) || (product.variants!==undefined && product.variants!==null) ? (
                     <ProductButton onClick={() => setPopup(index)}>
                       Add to Cart
                     </ProductButton>

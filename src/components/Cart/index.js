@@ -35,17 +35,6 @@ const Cart = (props) => {
     }
     // console.log(cartItem);
   },[cartItem]);
-  async function placeOrder() {
-    try {
-      await axios.get("https://api.eatx.in/api/v3/item/items/130/?key=tcd").then((response) => {
-        console.log(response.data);
-      }).catch(err => {
-        console.log(err);
-      })
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <SidebarContainer isOpen={isOpen}>
@@ -81,7 +70,6 @@ const Cart = (props) => {
         )}
         </aside>
       </Icon>
-      <button onClick={placeOrder}>HI</button>
     </SidebarContainer>
 
   );

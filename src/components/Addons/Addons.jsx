@@ -36,6 +36,7 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
 
   return (
     <div className="container">
+      <br></br><br></br>
       <span className="pizzatitle">{pizza.name}</span>
       <span className="close" onClick={() => setPopup(() => -1)}>
         X
