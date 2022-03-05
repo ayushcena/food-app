@@ -41,7 +41,6 @@ const Hero = () => {
       console.log("inside else statement");
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
-    console.log(cartItems);
   };
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);

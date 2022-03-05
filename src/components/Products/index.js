@@ -27,7 +27,6 @@ const Products = ({
   const [popup, setPopup] = useState(-1);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
-  console.log(products);
   //const [data2, setdata2] = useState(-1);
   return (
     <>
