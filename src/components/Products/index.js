@@ -34,6 +34,7 @@ const Products = ({
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
+            // console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
@@ -64,7 +65,7 @@ const Products = ({
                   ) : (
                     <ProductButton
                       onClick={() =>
-                        dispatch(addItemToCart({ product, quantity }))
+                        dispatch(addItemToCart({ product }))
                       }
                     >
                       Add to Cart

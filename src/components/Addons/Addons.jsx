@@ -15,21 +15,28 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
   const [toppingsArr, setToppings] = useState([]);
   const [addons, setAddons] = useState([]);
   const [sizePizza, setSizePizza] = useState({});
+  let nameee = pizza.item_data.name;
   let sizzzes = pizza.variants;
   let topppings;
-  if(pizza.extras !== null) {
+  if (pizza.extras !== null) {
     topppings = pizza.extras[0].items;
   }
+  let addonsss = pizza.extras;
+  if (pizza.extras === null || pizza.extras === undefined) {
+    addonsss = [];
+  }
+  if (pizza.extras !== null) {
+    addonsss = pizza.extras[1].items;
+  }
   let boolVal1 = true;
-  if(pizza.variants === null || pizza.variants === undefined) {
+  if (pizza.variants === null || pizza.variants === undefined) {
     boolVal1 = false;
     topppings = pizza;
     sizzzes = [];
   }
-  if(pizza.extras === null || pizza.extras === undefined) {
+  if (pizza.extras === null || pizza.extras === undefined) {
     topppings = [];
   }
-  console.log(pizza);
   let boolVal = true;
   if (topppings === undefined || topppings === null) {
     boolVal = false;
@@ -39,6 +46,8 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
   React.useEffect(() => {
     let op = 0;
     let y = 0;
+    // console.log(toppingsArr);
+    // console.log(toppingsArr);
     if (sizePizza.quantity) {
       y = sizePizza.price;
     }
@@ -71,16 +80,7 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
     getOrderDetails();
   }, []);
   const [finalData, setFinalData] = React.useState([]);
-  const DistingifushData = async () => {
-    for (let i = 0; i < res.length; i++) {
-      const element = res[i];
-      if (element.category === 'PIZZA') {
-        setFinalData(finalData.push(res[i + 1].items));
-      }
-    }
-  }
-  DistingifushData();
-  // console.log(finalData);
+
   return (
     <div className="container">
       <br></br><br></br>
@@ -90,8 +90,9 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
       </span>
       <div>
         {sizzzes.map((e) => {
+          // console.log(sizzzes);
           return (
-            <Info size={e.label} quantity={e.quantity} name={e.name} price={e.cost} setSizePizza={setSizePizza} />
+            <Info size={e.label} productId={e.id} quantity={1} name={nameee} price={e.cost} setSizePizza={setSizePizza} />
           );
         })}
       </div>
@@ -99,10 +100,13 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
       <div>
         {boolVal1 ? (<>
           {topppings.map((f, index) => {
+            // console.log(f);
             return (
               <Info2
+              productId={f.id}
                 topping={f.name}
                 price={f.cost}
+                index={index}
                 setToppings={setToppings}
                 array={toppingsArr}
               />
@@ -113,9 +117,9 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
       <div className="otherAddsHead">Add Other Add-ons:</div>
       <div>
         {boolVal ? (<>
-          {Otheradds.map((f, index) => {
+          {addonsss.map((f, index) => {
             return (
-              <Info3 productId={f.productId} drink={f.drink} quantity={f.quantity} array={addons} index={index} price={f.price} setAddons={setAddons} />
+              <Info3 productId={f.id} drink={f.name} quantity={1} array={addons} index={index} price={f.cost} setAddons={setAddons} />
             );
           })}
         </>) : (<></>)}

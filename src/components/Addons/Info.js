@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import {RemoveItemToCart,addItemToCartSpecified,pizzaSize,topping,addons} from '../../store/cartSlice';
 
 function Info(props) {
+  // console.log(props);
   const dispatch = useDispatch();
   return (
     <div className="sizecontainer">

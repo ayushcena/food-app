@@ -7,12 +7,13 @@ export const slice = createSlice({
     },
     reducers: {
         addItemToCart: (state, action) => {
+            console.log(action.payload);
             let bool = false;
             const pseudoId = (new Date()).getTime();
             for (let i = 0; i < state.cartItems.length; i++) {
                 if (state.cartItems[i].productId === action.payload.product.id) {
                     state.cartItems[i].quantity += 1;
-                    state.cartItems[i].totalPrice += action.payload.product.price;
+                    state.cartItems[i].totalPrice += action.payload.product.cost;
                     bool = true;
                 }
             }
@@ -20,10 +21,10 @@ export const slice = createSlice({
                 state.cartItems.push({
                     id: pseudoId,
                     productId: action.payload.product.id,
-                    name: action.payload.product.name,
-                    quantity: action.payload.quantity,
-                    price: action.payload.product.price,
-                    totalPrice: action.payload.quantity * action.payload.product.price
+                    name: action.payload.product.item_data.name,
+                    quantity: 1,
+                    price: action.payload.product.cost,
+                    totalPrice: 1 * action.payload.product.cost
                 });
             }
         },
@@ -88,6 +89,7 @@ export const slice = createSlice({
                 }
             }
         }, pizzaSize: (state, action) => {
+            console.log(action.payload);
             let priceofAddons = 0;
             for (let i = 0; i < action.payload.addons.length; i++) {
                 priceofAddons += action.payload.addons[i].price;
