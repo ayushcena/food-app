@@ -31,23 +31,20 @@ export const slice = createSlice({
         RemoveItemToCart: (state, action) => {
             let truth = 0;
             let si = 0;
+            console.log(action.payload);
             if (action.payload.topping) {
                 for (let i = 0; i < state.cartItems.length; i++) {
                     if (state.cartItems[i].productId === action.payload.productId) {
-                        si = i;
                         if (state.cartItems[i].topping.length === action.payload.topping.length) {
-                            for (let j = 0; j < state.cartItems[i].topping.length; j++) {
+                            for (let j = 0; j < action.payload.topping.length; j++) {
                                 if (state.cartItems[i].topping[j] === action.payload.topping[j]) {
                                     truth++;
                                 }
                             }
                             if (truth === state.cartItems[i].topping.length && truth === action.payload.topping.length) {
-                                if(state.cartItems[si].quantity >= 0 && state.cartItems[si].totalPrice >= 0){
-                                    state.cartItems[si].quantity -= 1;
-                                    state.cartItems[si].totalPrice -= action.payload.price;
-                                    console.log(state.cartItems[si].quantity);
-                                    console.log(state.cartItems[si].totalPrice);
-                                }
+                                si = i;
+                                state.cartItems[si].quantity -= 1;
+                                state.cartItems[si].totalPrice -= action.payload.price;
                             }
                         }
                     }
@@ -65,17 +62,18 @@ export const slice = createSlice({
         }, addItemToCartSpecified: (state, action) => {
             let truth = 0;
             let si = 0;
+            console.log(action.payload);
             if (action.payload.topping) {
                 for (let i = 0; i < state.cartItems.length; i++) {
                     if (state.cartItems[i].productId === action.payload.productId) {
-                        si = i;
                         if (state.cartItems[i].topping.length === action.payload.topping.length) {
-                            for (let j = 0; j < state.cartItems[i].topping.length; j++) {
+                            for (let j = 0; j < action.payload.topping.length; j++) {
                                 if (state.cartItems[i].topping[j] === action.payload.topping[j]) {
                                     truth++;
                                 }
                             }
                             if (truth === state.cartItems[i].topping.length && truth === action.payload.topping.length) {
+                                si = i;
                                 state.cartItems[si].quantity += 1;
                                 state.cartItems[si].totalPrice += action.payload.price;
                             }
@@ -94,35 +92,69 @@ export const slice = createSlice({
             }
         }, pizzaSize: (state, action) => {
             console.log(action.payload);
+            let truth = 0;
+            let si = 0;
+            let yes = 0;
             let priceofAddons = 0;
+            let priceofTopping = 0;
             for (let i = 0; i < action.payload.addons.length; i++) {
                 priceofAddons += action.payload.addons[i].price;
             }
             if (action.payload.sizePizza.size !== undefined && action.payload.sizePizza.name && action.payload.sizePizza.size !== null) {
                 let priceOfPizza = 0;
                 let xyz = [];
-                for (let i = 0; i < action.payload.toppingsArr.length; i++) {
-                    priceOfPizza += action.payload.toppingsArr[i].price;
-                    xyz.push(action.payload.toppingsArr[i].topping);
+                for (let i = 0; i < state.cartItems.length; i++) {
+                    if (state.cartItems[i].productId === action.payload.sizePizza.productId) {
+                        si = i;
+                        if (state.cartItems[i].topping.length === action.payload.toppingsArr.length) {
+                            for(let j=0;j<action.payload.toppingsArr.length;j++){
+                                priceofTopping += action.payload.toppingsArr[j].price;
+                                if(action.payload.toppingsArr[j].topping === state.cartItems[i].topping[j]){
+                                    truth++;
+                                }
+                            }
+                            if ((truth === action.payload.toppingsArr.length) && (truth === state.cartItems[i].topping.length)) {
+                                state.cartItems[i].quantity += 1;
+                                state.cartItems[i].totalPrice += action.payload.sizePizza.price + priceofTopping;
+                                yes++;
+                                break;
+                            }else{
+                                priceofTopping = 0;
+                            }
+                        }
+                    }   
                 }
-                priceOfPizza += action.payload.sizePizza.price;
-                priceOfPizza = parseInt(priceOfPizza);
-                let quantity = parseInt(action.payload.sizePizza.quantity)
-                state.cartItems.push({
-                    productId: action.payload.sizePizza.productId,
-                    size: action.payload.sizePizza.size,
-                    price: priceOfPizza,
-                    name: action.payload.sizePizza.name,
-                    quantity: quantity,
-                    topping: xyz,
-                    totalPrice: priceOfPizza * action.payload.sizePizza.quantity
-                });
+                if(!yes){
+                    for (let i = 0; i < action.payload.toppingsArr.length; i++) {
+                        priceOfPizza += action.payload.toppingsArr[i].price;
+                        xyz.push(action.payload.toppingsArr[i].topping);
+                    }
+                    priceOfPizza += action.payload.sizePizza.price;
+                    priceOfPizza = parseInt(priceOfPizza);
+                    let quantity = parseInt(action.payload.sizePizza.quantity);
+    
+                    if (truth) {
+                        state.cartItems[si].quantity += 1;
+                        state.cartItems[si].totalPrice += action.payload.sizePizza.price;
+                        return;
+                    }
+                    else {
+                        state.cartItems.push({
+                            productId: action.payload.sizePizza.productId,
+                            size: action.payload.sizePizza.size,
+                            price: priceOfPizza,
+                            name: action.payload.sizePizza.name,
+                            quantity: quantity,
+                            topping: xyz,
+                            totalPrice: priceOfPizza * action.payload.sizePizza.quantity
+                        });
+                    }
+                }
             }
             var mo = false;
             var index = 0;
             var idx = 0;
-            console.log(action.payload);
-            for (let j = 0; j < action.payload.addons.length ; j++) {
+            for (let j = 0; j < action.payload.addons.length; j++) {
                 for (var i = 0; i < state.cartItems.length; i++) {
                     if (action.payload.addons[j].drink === state.cartItems[i].name) {
                         mo = true;
