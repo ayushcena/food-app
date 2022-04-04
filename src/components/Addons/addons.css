@@ -97,7 +97,11 @@ div.otherAddsHead{
   **/
   
   .card-input-element {
-      display: none;
+      /* display: none; */
+      position: absolute;
+      margin-top: 25px;
+      margin-left: 13px;
+      
   }
   
   .card-input {

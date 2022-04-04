@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import Cart from "../Cart";
@@ -19,6 +19,8 @@ const Hero = () => {
   const [isCartOpens, setIsCartOpens] = useState(false);
   const [addonPrice, setAddonPrice] = useState(0);
   const [res, setRes] = useState([]);
+  const [scroll, setScroll] = useState({});
+  const onFocusPizza = useRef(null);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -29,7 +31,7 @@ const Hero = () => {
   const { products } = data;
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
-    console.log("inside on add func");
+    // console.log("inside on add func");
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
       setCartItems(
@@ -38,7 +40,7 @@ const Hero = () => {
         )
       );
     } else {
-      console.log("inside else statement");
+      // console.log("inside else statement");
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
@@ -70,11 +72,25 @@ const Hero = () => {
     }
   }
 
-  useEffect(() => getOrderDetails(), []);
+  useEffect(() => {
+    getOrderDetails();
+  }, []);
+  useEffect(() => {
+    res.map((cat) => {
+      setScroll((old) => {
+        return { ...old, [cat.category]: React.createRef() };
+      });
+    });
+  }, [res]);
   return (
     <HeroContainer>
       <Navbar toggle={toggle} toggleCart={toggleCart} />
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Sidebar
+        scroll={scroll}
+        onFocusPizza={onFocusPizza}
+        isOpen={isOpen}
+        toggle={toggle}
+      />
       <Cart
         isOpen={isCartOpens}
         toggle={toggleCart}
@@ -91,17 +107,20 @@ const Hero = () => {
           <HeroP>NEVER ENDING PIZZA-BILITIES</HeroP>
         </HeroItems>
       </HeroContent>
-      {res.map((cat) => (
-        <Products
-          heading={cat.category}
-          products={cat.items}
-          onAdd={onAdd}
-          setCartItems={setCartItems}
-          cartItems={cartItems}
-          addonPrice={addonPrice}
-          setAddonPrice={setAddonPrice}
-        />
-      ))}
+      {res.map((cat) => {
+        return (
+          <Products
+            scrollRef={scroll[cat.category]}
+            heading={cat.category}
+            products={cat.items}
+            onAdd={onAdd}
+            setCartItems={setCartItems}
+            cartItems={cartItems}
+            addonPrice={addonPrice}
+            setAddonPrice={setAddonPrice}
+          />
+        );
+      })}
       <Footer />
     </HeroContainer>
   );

@@ -18,18 +18,23 @@ import { useDispatch } from "react-redux";
 const Products = ({
   heading,
   products,
-  onAdd,
+  onAdd,scrollRef,
   setAddonPrice,
+  onFocusPizza,
   addonPrice,
   setCartItems,
   cartItems,
 }) => {
   const [popup, setPopup] = useState(-1);
   const [quantity, setQuantity] = useState(1);
+  const [showMore, setShowMore] = useState(0);
   const dispatch = useDispatch();
   //const [data2, setdata2] = useState(-1);
   return (
     <>
+
+        <div className="hellotesting" ref={scrollRef}></div>
+     
       <ProductsContainer>
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
@@ -56,17 +61,26 @@ const Products = ({
                 />
                 <ProductInfo>
                   <ProductTitle> {product.item_data.name} </ProductTitle>
-                  <ProductDesc> {product.item_data.description} </ProductDesc>
+                  <ProductDesc>
+                    {/* {showMore ? product.item_data.description : `${product.item_data.description.substring(0, 25)}`}
+                    <span 
+                      className="btn"
+                      onClick={() => setShowMore(!showMore)}
+                    >
+                      {showMore ? "...show less" : "...show more"}
+                    </span> */}{" "}
+                    {product.item_data.description}
+                  </ProductDesc>
                   <ProductPrice> {product.cost} </ProductPrice>
-                  {(product.extras!==undefined && product.extras!==null) || (product.variants!==undefined && product.variants!==null) ? (
+                  {(product.extras !== undefined && product.extras !== null) ||
+                  (product.variants !== undefined &&
+                    product.variants !== null) ? (
                     <ProductButton onClick={() => setPopup(index)}>
                       Add to Cart
                     </ProductButton>
                   ) : (
                     <ProductButton
-                      onClick={() =>
-                        dispatch(addItemToCart({ product }))
-                      }
+                      onClick={() => dispatch(addItemToCart({ product }))}
                     >
                       Add to Cart
                     </ProductButton>

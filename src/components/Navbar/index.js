@@ -6,12 +6,12 @@ const Navbar = ({toggleCart , toggle}) => {
     <>
       <Nav>
         <NavLink to='/'>The Circle Dream</NavLink>
-        <NavIcon onClick={toggleCart}>
-          <p className="cart">Cart<Bars1 /></p>
-        </NavIcon>
         <NavIcon onClick={toggle}>
           <p className="menu">Menu</p>
           <Bars />
+        </NavIcon>
+        <NavIcon onClick={toggleCart}>
+          <p className="cart">Cart<Bars1 /></p>
         </NavIcon>
       </Nav>
     </>

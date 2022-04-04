@@ -34,9 +34,10 @@ h3 {
   font-weight: bold;
   font-size: 30px;
   margin-left: 20px;
+  margin-top: -250px;
 }
 .cartcontainer{
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-left: 20px;
 }
 .row {
@@ -111,7 +112,7 @@ hr.lowerline{
   margin-left: 2rem;
 } */
 .col-4{
-  margin-top: -15px;
+  /* margin-top: -15px; */
   /* flex: 0.3; */
 }
 

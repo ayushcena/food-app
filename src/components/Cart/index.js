@@ -33,13 +33,14 @@ const Cart = (props) => {
       }
       (Math.round(totalPrice1 * 100) / 100).toFixed(2)
     }
-    // console.log(cartItem);
+    console.log("aaaaaaaaaaaaaaaaaaaaa",cartItem.length);
   },[cartItem]);
 
   return (
     <SidebarContainer isOpen={isOpen}>
-      <Icon >
-        <span className="closeicon" onClick={toggle}>X</span>
+      <Icon onClick={toggle}>
+        <CloseIcon />
+        </Icon>
         <aside className="block col-1">
           <div className="carthead">Cart Items</div>
           <div className="cartcontainer">
@@ -69,10 +70,11 @@ const Cart = (props) => {
               <Example/>  
         )}
         </aside>
-      </Icon>
+      
     </SidebarContainer>
 
   );
 };
+
 
 export default Cart;

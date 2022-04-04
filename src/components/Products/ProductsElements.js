@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ProductsContainer = styled.div`
   /* width: 100vw; */
-  min-height: 100vh;
+  // min-height: 100vh;
   padding: 5rem calc((100vw - 1300px) / 2);
   background: #150f0f;
   color: #fff;
@@ -17,7 +17,7 @@ export const ProductWrapper = styled.div`
 `;
 
 export const ProductCard = styled.div`
-  margin: 0 0rem;
+  margin: 1rem 0rem;
   line-height: 2;
   width: 250px;
 
@@ -149,8 +149,9 @@ export const ProductInfo = styled.div`
 
 export const ProductDesc = styled.p`
   margin-bottom: 0.3rem;
+  width: 120%;
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.3;
 
   @media screen and (max-width: 900px) {
     font-size: 0.8rem;

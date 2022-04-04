@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FaTimes } from 'react-icons/fa';
 
 export const SidebarContainer = styled.aside`
   position: fixed;
@@ -16,6 +17,11 @@ export const SidebarContainer = styled.aside`
   @media screen and (max-width: 400px) {
     width: 100%;
   }
+`;
+export const CloseIcon = styled(FaTimes)`
+  color: #000;
+  cursor: pointer;
+  margin-bottom: 10px;
 `;
 
 export const Icon = styled.div`

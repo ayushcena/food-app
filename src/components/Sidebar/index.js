@@ -1,23 +1,28 @@
-import React from 'react';
+import React from "react";
 import {
   SidebarContainer,
   Icon,
   CloseIcon,
   SidebarMenu,
   SidebarLink,
-} from './SidebarElements';
-import './sidebar.css';
+} from "./SidebarElements";
+import "./sidebar.css";
 
-const Sidebar = ({ isOpen, toggle }) => {
+const Sidebar = ({ scroll, isOpen, toggle }) => {
+  console.log(scroll);
+  const scrollArray = Object.keys(scroll).map((key) => [key, scroll[key]]);
+  // console.log(scrollArray);
   return (
-    <SidebarContainer isOpen={isOpen} >
+    <SidebarContainer isOpen={isOpen}>
       <Icon onClick={toggle}>
         <CloseIcon />
       </Icon>
-      <SidebarMenu>
-        <SidebarLink>Pizzas</SidebarLink>
-        <SidebarLink to='/'><a href="deserts" id="desert">Desserts</a></SidebarLink>
-        <SidebarLink to='/'>Full Menu</SidebarLink>
+      <SidebarMenu onClick={toggle}>
+        {scrollArray.map((item) => (
+          <SidebarLink onClick={() => item[1].current.scrollIntoView()}>
+            {item[0]}
+          </SidebarLink>
+        ))}
       </SidebarMenu>
     </SidebarContainer>
   );
