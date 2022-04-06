@@ -21,23 +21,30 @@ const Cart = (props) => {
     return a + c.qty * c.price;
   }, 0);
   const totalPrice = itemsPrice;
+  const [quantity,setQuantity] = React.useState(0);
   const [totalPrice1,setTotalPrice1] = React.useState(0);
   const cartItem = useSelector(getCartItems);
   let totalprice = 0;
   React.useEffect(()=>{
     if(cartItem.length > 0){
       let total = 0;
+      let quantity1 = 0;
       for (let i = 0; i < cartItem.length; i++) {
         total += cartItem[i].totalPrice;
+        quantity1 += cartItem[i].quantity;
+        setQuantity(quantity1);
         setTotalPrice1(total);
       }
-      (Math.round(totalPrice1 * 100) / 100).toFixed(2)
+      localStorage.setItem('quantity',cartItem.length);
+      (Math.round(totalPrice1 * 100) / 100).toFixed(2);
     }
-<<<<<<< HEAD
-    console.log("aaaaaaaaaaaaaaaaaaaaa",cartItem.length);
-=======
->>>>>>> ae3be7e795f2d496294e3313936e2c378e180be4
   },[cartItem]);
+
+  React.useEffect(()=>{
+    localStorage.setItem('price',totalPrice1);
+    localStorage.setItem('quantity',quantity);
+  },[totalPrice1])
+  // console.log(localStorage.getItem('quantity'));
 
   return (
     <SidebarContainer isOpen={isOpen}>
@@ -70,7 +77,7 @@ const Cart = (props) => {
         )}
           </div>
           {cartItem.length !== 0 && (
-              <Example/>  
+              <Example totalPrice={totalPrice1}/>  
         )}
         </aside>
       
