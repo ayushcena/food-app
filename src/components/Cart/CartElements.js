@@ -8,7 +8,6 @@ export const SidebarContainer = styled.aside`
   height: 100%;
   background: #ffc500;
   display: grid;
-  align-items: center;
   top: 0;
   overflow: scroll;
   transition: 0.3s ease-in-out;
@@ -22,16 +21,19 @@ export const CloseIcon = styled(FaTimes)`
   color: #000;
   cursor: pointer;
   margin-bottom: 10px;
+  margin-top: -15px;
+  margin-left: 340px;
 `;
 
 export const Icon = styled.div`
   position: absolute;
-  top: 0.7rem;
+  top: 1.7rem;
   background: transparent;
   border: transparent;
   font-size: 2rem;
   // cursor: pointer;
   outline: none;
+  margin-top: -10px;
 `;
 
 

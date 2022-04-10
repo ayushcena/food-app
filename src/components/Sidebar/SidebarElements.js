@@ -49,7 +49,7 @@ export const SidebarLink = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-decoration: none;
   list-style: none;
   transition: 0.2s ease-in-out;
@@ -61,5 +61,39 @@ export const SidebarLink = styled.div`
     transition: 0.2s ease-in-out;
   }
 `;
+
+export const Bigtext = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  color: #000;
+  cursor: pointer;
+
+  &:hover {
+    color: #e31837;
+    transition: 0.2s ease-in-out;
+  }
+  `;
+
+  export const Smalltext = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  text-decoration: none;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  color: #111;
+  cursor: pointer;
+
+  &:hover {
+    color: #e31837;
+    transition: 0.2s ease-in-out;
+  }
+  `;
 
 

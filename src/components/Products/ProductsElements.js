@@ -196,6 +196,7 @@ export const ProductPrice = styled.p`
 
   @media screen and (max-width: 490px) {
     margin-left: -6rem;
+    margin-top:0.5rem;
   }
 
   @media screen and (max-width: 490px) and (min-width: 400px) {
@@ -249,4 +250,23 @@ export const ProductButton = styled.button`
     font-size: 0.7rem;
     padding: 0.3rem 0.4rem;
   }
+`;
+
+export const Customize = styled.div`
+font-size: 0.6rem;
+color: #fcf3c3;
+font-family: 'Quicksand', sans-serif;
+
+@media screen and (max-width: 490px) {
+  margin-right: -6rem;
+  font-size: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 490px) and (min-width: 400px) {
+  margin-right: -8rem;
+}
+
+@media screen and (max-width: 350px) {
+}
 `;

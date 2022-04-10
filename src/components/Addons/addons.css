@@ -24,7 +24,7 @@ div.container{
 .close{
     cursor: pointer;
     margin-right:345px;
-    margin-top: -50px;
+    margin-top: -45px;
     color: black;
     margin-bottom: 10px;
     font-size: 25px;
@@ -33,9 +33,11 @@ div.container{
 }
 
 .pizzatitle{
-    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    margin-top: -55px;
     font-size: 23px;
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 h1.title{
@@ -99,13 +101,13 @@ div.otherAddsHead{
   .card-input-element {
       /* display: none; */
       position: absolute;
-      margin-top: 25px;
+      margin-top: 20px;
       margin-left: 13px;
       
   }
   
   .card-input {
-      margin: 5px;
+      margin: 0px;
       width:370px;
       /* border:1px solid rgba(0, 0, 0, 1); */
       border-radius:20px;
@@ -130,7 +132,7 @@ div.otherAddsHead{
    }
 
    .card-input-2 {
-    margin: 5px;
+    margin: 0px;
     width:370px;
     /* border:1px solid rgba(0, 0, 0, 1); */
     padding-left: 30px;

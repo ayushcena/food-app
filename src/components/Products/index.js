@@ -11,6 +11,7 @@ import {
   ProductDesc,
   ProductPrice,
   ProductButton,
+  Customize
 } from "./ProductsElements";
 import { addItemToCart } from "../../store/cartSlice";
 import { useDispatch } from "react-redux";
@@ -71,13 +72,16 @@ const Products = ({
                     </span> */}{" "}
                     {product.item_data.description}
                   </ProductDesc>
-                  <ProductPrice> {product.cost} </ProductPrice>
+                  <ProductPrice> ₹{product.cost} </ProductPrice>
                   {(product.extras !== undefined && product.extras !== null) ||
                   (product.variants !== undefined &&
                     product.variants !== null) ? (
+                      <>
                     <ProductButton onClick={() => setPopup(index)}>
                       Add to Cart
                     </ProductButton>
+                    <Customize>customizable</Customize>
+                    </>
                   ) : (
                     <ProductButton
                       onClick={() => dispatch(addItemToCart({ product }))}

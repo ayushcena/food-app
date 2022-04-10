@@ -26,7 +26,7 @@ const CartItems = ({cartItem}) => {
             <div className="col-3">
             {cartItem.quantity} x ₹{cartItem.totalPrice.toFixed(2)}
             </div>
-            {console.log("ffffffffffff", cartItem.quantity)};
+            {console.log("ffffffffffff", cartItem.quantity)}
             </div>
     )
 }
