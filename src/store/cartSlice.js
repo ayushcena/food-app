@@ -7,7 +7,7 @@ export const slice = createSlice({
     },
     reducers: {
         addItemToCart: (state, action) => {
-            console.log(action.payload);
+            // console.log(action.payload);
             let bool = false;
             const pseudoId = (new Date()).getTime();
             for (let i = 0; i < state.cartItems.length; i++) {
@@ -31,7 +31,6 @@ export const slice = createSlice({
         RemoveItemToCart: (state, action) => {
             let truth = 0;
             let si = 0;
-            console.log(action.payload);
             if (action.payload.topping) {
                 for (let i = 0; i < state.cartItems.length; i++) {
                     if (state.cartItems[i].productId === action.payload.productId) {
@@ -62,7 +61,6 @@ export const slice = createSlice({
         }, addItemToCartSpecified: (state, action) => {
             let truth = 0;
             let si = 0;
-            console.log(action.payload);
             if (action.payload.topping) {
                 for (let i = 0; i < state.cartItems.length; i++) {
                     if (state.cartItems[i].productId === action.payload.productId) {
@@ -91,7 +89,6 @@ export const slice = createSlice({
                 }
             }
         }, pizzaSize: (state, action) => {
-            console.log(action.payload);
             let truth = 0;
             let si = 0;
             let yes = 0;
