@@ -13,22 +13,23 @@ import {
 } from "./HeroElements";
 import Products from "../Products";
 import axios from "axios";
-import {getCartItems} from '../../store/cartSlice';
-import { useSelector } from 'react-redux';
+import { getCartItems } from "../../store/cartSlice";
+import { useSelector } from "react-redux";
 const Hero = () => {
+  // localstorage.getitem('quantity')
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpens, setIsCartOpens] = useState(false);
   const [addonPrice, setAddonPrice] = useState(0);
   const [res, setRes] = useState([]);
   const [scroll, setScroll] = useState({});
   const onFocusPizza = useRef(null);
-  
+
   const cartItem = useSelector(getCartItems);
-  React.useEffect(()=>{
-    if(cartItem.length > 0){
-      localStorage.setItem('quantity',cartItem.length);
+  React.useEffect(() => {
+    if (cartItem.length > 0) {
+      localStorage.setItem("quantity", cartItem.length);
     }
-  },[cartItem]);
+  }, [cartItem]);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -83,9 +84,18 @@ const Hero = () => {
     getOrderDetails();
   }, []);
   useEffect(() => {
+    console.log(res);
+
     res.map((cat) => {
       setScroll((old) => {
-        return { ...old, [cat.category]: React.createRef() };
+        return {
+          ...old,
+          [cat.category]: {
+            ref: React.createRef(),
+            heading: cat.items.length > 0 ? false : true,
+            subHeading: cat.items.length > 0 ? true : false,
+          },
+        };
       });
     });
   }, [res]);

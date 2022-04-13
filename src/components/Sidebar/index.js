@@ -23,8 +23,8 @@ const Sidebar = ({ scroll, isOpen, toggle }) => {
           
           <SidebarLink onClick={() => item[1].current.scrollIntoView()}>
             {console.log('aaaaaaaaaaaa',item)}
-            {item[0] === 'PIZZA'? <Smalltext>xxxx</Smalltext>: <Bigtext></Bigtext> }
-            {item[0]}
+            {item[1].heading?<Bigtext>{item[0]}</Bigtext>: <Smalltext>{item[0]}</Smalltext>}
+           
           </SidebarLink>
         ))}
       </SidebarMenu>
