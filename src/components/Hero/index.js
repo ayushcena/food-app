@@ -13,7 +13,8 @@ import {
 } from "./HeroElements";
 import Products from "../Products";
 import axios from "axios";
-
+import {getCartItems} from '../../store/cartSlice';
+import { useSelector } from 'react-redux';
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpens, setIsCartOpens] = useState(false);
@@ -21,7 +22,13 @@ const Hero = () => {
   const [res, setRes] = useState([]);
   const [scroll, setScroll] = useState({});
   const onFocusPizza = useRef(null);
-
+  
+  const cartItem = useSelector(getCartItems);
+  React.useEffect(()=>{
+    if(cartItem.length > 0){
+      localStorage.setItem('quantity',cartItem.length);
+    }
+  },[cartItem]);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
