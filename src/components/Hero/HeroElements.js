@@ -9,7 +9,7 @@ export const HeroContainer = styled.div`
   background-size: cover;
 
   @media screen and (max-width: 450px) {
-    height: 500px
+    height: 400px
   }
 `;
 

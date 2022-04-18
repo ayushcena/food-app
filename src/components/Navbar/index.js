@@ -8,7 +8,7 @@ const Navbar = ({toggleCart , toggle}) => {
         <NavLink to='/'>The Circle Dream</NavLink>
         
         <NavIcon onClick={toggleCart}>
-        {localStorage.getItem('quantity')}
+        {/* {localStorage.getItem('quantity')} */}
           <p className="cart">Cart<Bars1 /></p>
         </NavIcon>
         <NavIcon onClick={toggle}>

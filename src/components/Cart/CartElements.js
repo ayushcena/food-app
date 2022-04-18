@@ -6,7 +6,6 @@ export const SidebarContainer = styled.aside`
   z-index: 999;
   width: 400px;
   height: 100%;
-  background: #ffc500;
   display: grid;
   top: 0;
   overflow: scroll;
@@ -22,7 +21,7 @@ export const CloseIcon = styled(FaTimes)`
   cursor: pointer;
   margin-bottom: 10px;
   margin-top: -15px;
-  margin-left: 340px;
+  margin-left: 320px;
 `;
 
 export const Icon = styled.div`

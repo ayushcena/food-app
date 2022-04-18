@@ -12,7 +12,7 @@ div.container{
     height: 550px;
     overflow: scroll;
     background-color: #ffc500;
-    color: #b90e28;
+    color: #e31837;
 }
     
     @media screen and (max-width: 400px) {
@@ -53,7 +53,7 @@ div.pizzasize{
     width:350px;
     border-radius:20px;
     font-size: 18px;
-    color: rgb(56, 52, 52);
+    color: black;
 }
 span.sizeprice{
     margin-left: 77%;
@@ -68,7 +68,7 @@ div.topping{
     width:320px;
     /* border-radius:20px; */
     font-size: 18px;
-    color: rgb(56, 52, 52);
+    color: black;
 }
 
 span.toppingprice{
@@ -108,7 +108,8 @@ div.otherAddsHead{
   
   .card-input {
       margin: 0px;
-      width:370px;
+      margin-right: 7px;
+      width:350px;
       /* border:1px solid rgba(0, 0, 0, 1); */
       border-radius:20px;
       padding-left: 30px;
@@ -116,7 +117,7 @@ div.otherAddsHead{
       padding-bottom: 8px;
       font-size: 18px;
       color: rgb(0, 0, 0,0.822);
-      background-color: #fcf3c3;
+      background-color: white;
       box-shadow: 2px 1px 3px #00000052;
   }
   
@@ -125,22 +126,23 @@ div.otherAddsHead{
   }
   
   .card-input-element:checked + .card-input {
-       box-shadow: 0 0 1px 1px #2ecc71;
+       box-shadow: 0 0 1px 1px rgb(17, 167, 17);
        background-color: #99f8c2;
-       border-color: #2ecc71;
+       border-color: rgb(17, 167, 17);
        box-shadow: -4px 3px 3px #00000052;
    }
 
    .card-input-2 {
     margin: 0px;
-    width:370px;
+    margin-right: 7px;
+    width:350px;
     /* border:1px solid rgba(0, 0, 0, 1); */
     padding-left: 30px;
     padding-top: 8px;
     padding-bottom: 8px;
     font-size: 18px;
     color: rgba(0, 0, 0, 0.822);
-    background-color: #fcf3c3;
+    background-color: white;
     box-shadow: 2px 1px 3px #00000052;
 }
 
@@ -155,19 +157,37 @@ div.otherAddsHead{
     box-shadow: -4px 3px 3px #00000052;
  }
 .totalcost{
+    margin-left: 10px;
     font-size: 22px;
     font-weight: 700;
 }
 .totalprice{
-    padding-left: 17px;
+    padding-left: 30px;
     margin-top: -28px;
     font-size: 22px;
     /* margin-bottom: 40px; */
 }
 .footer{
-    background-color: rgb(255, 254, 208);
-    padding-right: 170px;
-    padding-left: 10px;
+    padding-bottom: 11px;
+    background-color: white;
+    padding-right: 114px;
+    padding-left: 11px;
     position:fixed;
     margin-top: 1200px;
+}
+.addcart{
+    border: 1px solid transparent;
+    /* padding-left: 2px; */
+    margin-left: 260px;
+    margin-top: -40px;
+    margin-right: -100px;
+    /* margin-right: 80px; */
+    /* margin-left: 150px; */
+    /* margin-top: -10px; */
+    cursor: pointer;
+    background-color: #e31837;
+    color: white;
+    font-size: 14px;
+    padding-left: 2px;
+    padding-right: 2px;
 }

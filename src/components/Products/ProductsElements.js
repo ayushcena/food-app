@@ -102,8 +102,8 @@ export const ProductsHeading = styled.h1`
 
   @media screen and (max-width: 500px) {
     font-size: 1.4rem; 
-    margin-bottom: 1rem;
-    margin-top: -4rem;
+    margin-bottom: 2.5rem;
+    margin-top: -4.5rem;
   }
 `;
 
@@ -124,7 +124,10 @@ export const ProductTitle = styled.h2`
   }
 
   @media screen and (max-width: 450px) {
-    margin-top: -3.3rem;
+    margin-top: -2rem;
+    text-align: left;
+    margin-left: 1.3rem;
+    margin-right: 0.5rem;
   }
 
   @media screen and (max-width: 370px) {
@@ -152,6 +155,7 @@ export const ProductDesc = styled.p`
   width: 120%;
   font-size: 0.9rem;
   line-height: 1.3;
+  text-align: justify;
 
   @media screen and (max-width: 900px) {
     font-size: 0.8rem;

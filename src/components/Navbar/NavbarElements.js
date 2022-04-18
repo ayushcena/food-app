@@ -33,7 +33,7 @@ export const Nav = styled.nav`
 
 export const NavLink = styled(Link)`
   background-color: transparent;
-  color: #e31837;
+  color: white;
   font-size: 2.5rem;
   text-decoration: none;
   margin-left: 38vw;

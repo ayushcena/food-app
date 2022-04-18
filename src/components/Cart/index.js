@@ -10,6 +10,7 @@ import Example from './login';
 import {getCartItems} from '../../store/cartSlice';
 import GivenItems from './CartItems';
 import axios from 'axios';
+import {COLORS} from '../colors.js'
 
 const Cart = (props) => {
   const { cartItems, onAdd, onRemove, isOpen, toggle, addOnPrice } = props;
@@ -47,7 +48,7 @@ const Cart = (props) => {
   // console.log(localStorage.getItem('quantity'));
 
   return (
-    <SidebarContainer isOpen={isOpen}>
+    <SidebarContainer style={{backgroundColor: COLORS.yellow}} isOpen={isOpen}>
       <Icon onClick={toggle}>
         <CloseIcon />
         </Icon>
