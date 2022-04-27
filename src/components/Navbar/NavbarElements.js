@@ -69,8 +69,8 @@ export const NavLink = styled(Link)`
   }
 
   @media screen and (max-width: 300px) {
-    font-size: 1.22rem;
-    margin-left: 28vw;
+    font-size: 1rem;
+    margin-left: 30vw;
   }
  `;
 
@@ -93,15 +93,19 @@ export const NavIcon = styled.div`
 
     @media screen and (max-width: 600px) {
       transform: translate(160%, 62%);
+      font-size:0.8rem;
+      margin-top:-2.3px;
     }
 
     @media screen and (max-width: 400px) {
-      font-size: 0.6rem;
-      // transform: translate(-2100%, 76%);
+      // font-size: 0.6rem;
+      transform: translate(120%, 52%);
     }
 
     @media screen and (max-width: 330px) {
       // transform: translate(-2080%, 66%);
+      font-size:0.7rem;
+      transform: translate(90%, 52%);
     }
   }
   .cart {
@@ -144,7 +148,8 @@ export const NavIcon = styled.div`
 
     @media screen and (max-width: 650px) {
       margin-left:86.8vw;
-      transform: translate(0%, -6.2%);
+      transform: translate(-10%, -6.2%);
+      font-size: 0.8rem;
     }
 
     @media screen and (max-width: 550px) {
@@ -152,19 +157,20 @@ export const NavIcon = styled.div`
     }
 
     @media screen and (max-width: 400px) {
-      font-size: 0.6rem;
+      // font-size: 0.6rem;
       // transform: translate( -40%, 30%);
     }
 
     @media screen and (max-width: 330px) {
-      transform: translate(0%, -16%);
+      transform: translate(-7%, -6%);
+      font-size: 0.7rem;
     }
 `;
 export const Bars1 = styled(FaCartPlus)`
   font-size: 1.7rem;
   margin-left:0.3vw;
   margin-right:0.5vw;
-  margin-top:8px;
+  margin-top:4px;
   transform: translate(0%, 25%);
 
   @media screen and (max-width: 800px) {
@@ -172,12 +178,14 @@ export const Bars1 = styled(FaCartPlus)`
   }
 
   @media screen and (max-width: 400px) {
-    font-size: 1rem;
-    // transform: translate(15%, 25%);
+    font-size: 1.3rem;
+    transform: translate(0%, 30%);
   }
 
   @media screen and (max-width: 330px) {
     // transform: translate(0%, -30%);
+    font-size:1rem;
+    transform: translate(-0%, 25%);
   }
 `;
 
@@ -194,11 +202,12 @@ export const Bars = styled(FaList)`
   }
 
   @media screen and (max-width: 400px) {
-    font-size: 1rem;
-    transform: translate(100%, -50%);
+    font-size: 1.25rem;
+    transform: translate(65%, -32%);
   }
 
   @media screen and (max-width: 330px) {
-    // transform: translate(-2950%, -45%);
+    transform: translate(30%, -58%);
+    font-size:1rem;
   }
 `;

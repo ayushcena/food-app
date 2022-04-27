@@ -12,7 +12,15 @@ export const SidebarContainer = styled.aside`
   transition: 0.3s ease-in-out;
   right: ${({ isOpen }) => (isOpen ? '0' : '-1000px')};
 
+  @media screen and (max-width: 600px) {
+    width: 350px;
+  }
+
   @media screen and (max-width: 400px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 300px) {
     width: 100%;
   }
 `;
@@ -21,7 +29,15 @@ export const CloseIcon = styled(FaTimes)`
   cursor: pointer;
   margin-bottom: 10px;
   margin-top: -15px;
-  margin-left: 320px;
+  margin-left: 340px;
+
+  @media screen and (max-width: 600px) {
+    margin-left: 290px;
+  }
+
+  @media screen and (max-width: 300px) {
+    margin-left: 245px;
+  }
 `;
 
 export const Icon = styled.div`

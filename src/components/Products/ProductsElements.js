@@ -82,7 +82,7 @@ export const ProductImg = styled.img`
 
   @media screen and (max-width: 300px) {
     max-width: 50%;
-    min-width: 90px;
+    min-width: 85px;
     max-height: 50%;
     min-height: 80px; 
     border-radius: 8px;

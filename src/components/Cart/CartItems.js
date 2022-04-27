@@ -18,13 +18,13 @@ const CartItems = ({cartItem}) => {
                 <div className="col-4">
               <span onClick={decrease} className="remove">
                 -
-              </span>{' '}
+              </span><b className='quant'>{cartItem.quantity}</b>
               <span onClick={increase} className="add">
                 +
               </span>
             </div>
             <div className="col-3">
-            {cartItem.quantity} x ₹{cartItem.totalPrice.toFixed(2)}
+             <span className='currency'>₹</span>{cartItem.totalPrice.toFixed(2)}
             </div>
             {console.log("ffffffffffff", cartItem.quantity)}
             </div>
