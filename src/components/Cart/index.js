@@ -25,7 +25,6 @@ const Cart = (props) => {
   const [quantity,setQuantity] = React.useState(0);
   const [totalPrice1,setTotalPrice1] = React.useState(0);
   const cartItem = useSelector(getCartItems);
-  let totalprice = 0;
   React.useEffect(()=>{
     if(cartItem.length > 0){
       let total = 0;
@@ -45,7 +44,6 @@ const Cart = (props) => {
     localStorage.setItem('price',totalPrice1);
     localStorage.setItem('quantity',quantity);
   },[totalPrice1])
-  // console.log(localStorage.getItem('quantity'));
 
   return (
     <SidebarContainer style={{backgroundColor: COLORS.yellow}} isOpen={isOpen}>
@@ -57,7 +55,6 @@ const Cart = (props) => {
           <div className="cartcontainer">
           {cartItem.length === 0 && <div className="emptycart">Cart is empty</div>}
             {cartItem.map((item) =>{
-              // console.log(item);
               if(item.quantity > 0){
                 return (
                   <GivenItems cartItem={item}></GivenItems>

@@ -14,15 +14,15 @@ import {
   Customize
 } from "./ProductsElements";
 import { addItemToCart } from "../../store/cartSlice";
-import {getCartItems} from '../../store/cartSlice';
+import { getCartItems } from '../../store/cartSlice';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
-import {RemoveItemToCart,addItemToCartSpecified} from '../../store/cartSlice';
+import { RemoveItemToCart, addItemToCartSpecified } from '../../store/cartSlice';
 
 const Products = ({
   heading,
   products,
-  onAdd,scrollRef,
+  onAdd, scrollRef,
   setAddonPrice,
   onFocusPizza,
   addonPrice,
@@ -46,13 +46,12 @@ const Products = ({
   return (
     <>
 
-        <div className="hellotesting" ref={scrollRef}></div>
-     
+      <div className="hellotesting" ref={scrollRef}></div>
+
       <ProductsContainer>
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
-            console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
@@ -70,7 +69,7 @@ const Products = ({
                 )}
                 <ProductImg
                   src={product.item_data.pic4mob}
-                  // alt={product.item_data.name}
+                // alt={product.item_data.name}
                 />
                 <ProductInfo>
                   <ProductTitle> {product.item_data.name} </ProductTitle>
@@ -83,30 +82,30 @@ const Products = ({
                       {showMore ? "...show less" : "...show more"}
                     </span> */}{" "}
                     {product.item_data.description}
-                  </ProductDesc> 
+                  </ProductDesc>
                   <ProductPrice> ₹{product.cost} </ProductPrice>
                   {(product.extras !== undefined && product.extras !== null) ||
-                  (product.variants !== undefined &&
-                    product.variants !== null) ? (
-                      <>
-                    <ProductButton onClick={() => setPopup(index)}>
-                      Add to Cart
-                    </ProductButton>
-                    <Customize>customizable</Customize>
+                    (product.variants !== undefined &&
+                      product.variants !== null) ? (
+                    <>
+                      <ProductButton onClick={() => setPopup(index)}>
+                        Add to Cart
+                      </ProductButton>
+                      <Customize>customizable</Customize>
                     </>
                   ) : (
                     <>
-                    <span onClick={decrease} className="remove">
-                    -
-                  </span>
-                    <ProductButton
-                      onClick={() => dispatch(addItemToCart({ product }))}
-                    >
-                      Add to Cart
-                    </ProductButton>
-                  <span onClick={increase({id:product.id,name:product.item_data.name,price:product.cost,productId:product.id})} className="add">
-                    +
-                  </span>
+                      <span onClick={decrease} className="remove">
+                        -
+                      </span>
+                      <ProductButton
+                        onClick={() => dispatch(addItemToCart({ product }))}
+                      >
+                        Add to Cart
+                      </ProductButton>
+                      <span onClick={increase} className="add">
+                        +
+                      </span>
                     </>
                   )}
                 </ProductInfo>
