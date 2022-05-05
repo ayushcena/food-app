@@ -14,7 +14,10 @@ import {
   Customize
 } from "./ProductsElements";
 import { addItemToCart } from "../../store/cartSlice";
+import {getCartItems} from '../../store/cartSlice';
+import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
+import {RemoveItemToCart,addItemToCartSpecified} from '../../store/cartSlice';
 
 const Products = ({
   heading,
@@ -30,6 +33,15 @@ const Products = ({
   const [quantity, setQuantity] = useState(1);
   const [showMore, setShowMore] = useState(0);
   const dispatch = useDispatch();
+  const cartItem = useSelector(getCartItems);
+  const increase = (data) => {
+    dispatch(addItemToCartSpecified(data));
+    console.log("+++");
+  };
+  const decrease = (data) => {
+    dispatch(RemoveItemToCart(data));
+    console.log("---");
+  };
   //const [data2, setdata2] = useState(-1);
   return (
     <>
@@ -40,7 +52,7 @@ const Products = ({
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
-            // console.log(product);
+            console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
@@ -57,7 +69,7 @@ const Products = ({
                   false
                 )}
                 <ProductImg
-                  src={product.pic4mob}
+                  src={product.item_data.pic4mob}
                   // alt={product.item_data.name}
                 />
                 <ProductInfo>
@@ -71,7 +83,7 @@ const Products = ({
                       {showMore ? "...show less" : "...show more"}
                     </span> */}{" "}
                     {product.item_data.description}
-                  </ProductDesc>
+                  </ProductDesc> 
                   <ProductPrice> ₹{product.cost} </ProductPrice>
                   {(product.extras !== undefined && product.extras !== null) ||
                   (product.variants !== undefined &&
@@ -83,11 +95,19 @@ const Products = ({
                     <Customize>customizable</Customize>
                     </>
                   ) : (
+                    <>
+                    <span onClick={decrease} className="remove">
+                    -
+                  </span>
                     <ProductButton
                       onClick={() => dispatch(addItemToCart({ product }))}
                     >
                       Add to Cart
                     </ProductButton>
+                  <span onClick={increase({id:product.id,name:product.item_data.name,price:product.cost,productId:product.id})} className="add">
+                    +
+                  </span>
+                    </>
                   )}
                 </ProductInfo>
               </ProductCard>
