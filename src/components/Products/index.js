@@ -42,6 +42,7 @@ const Products = ({
     dispatch(RemoveItemToCart(data));
     console.log("---");
   };
+  console.log();
   //const [data2, setdata2] = useState(-1);
   return (
     <>
@@ -53,6 +54,7 @@ const Products = ({
         <ProductWrapper>
           {products.map((product, index) => {
             console.log(product);
+            console.log("wdesdsfdsdf",product.item_data.pic4mob);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
@@ -69,7 +71,8 @@ const Products = ({
                   false
                 )}
                 <ProductImg
-                  src={product.item_data.pic4mob}
+                  src={'https://api.eatx.in/media/'+product.item_data.pic4mob}
+                  
                   // alt={product.item_data.name}
                 />
                 <ProductInfo>
@@ -95,18 +98,20 @@ const Products = ({
                     <Customize>customizable</Customize>
                     </>
                   ) : (
+                    
                     <>
-                    <span onClick={decrease} className="remove">
-                    -
-                  </span>
                     <ProductButton
                       onClick={() => dispatch(addItemToCart({ product }))}
                     >
                       Add to Cart
                     </ProductButton>
+                    {/* <span onClick={decrease} className="remove">
+                    -
+                  </span>
+                    
                   <span onClick={increase({id:product.id,name:product.item_data.name,price:product.cost,productId:product.id})} className="add">
                     +
-                  </span>
+                  </span> */}
                     </>
                   )}
                 </ProductInfo>
