@@ -15,7 +15,7 @@ import Products from "../Products";
 import axios from "axios";
 import { getCartItems } from "../../store/cartSlice";
 import { useSelector } from "react-redux";
-const Hero = () => {
+const Hero = ({apidatas}) => {
   // localstorage.getitem('quantity')
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpens, setIsCartOpens] = useState(false);
@@ -121,7 +121,7 @@ const Hero = () => {
           <HeroH1>
             <div>The</div> <div>Circle Dream</div>
           </HeroH1>
-          <HeroP>NEVER ENDING PIZZA-BILITIES</HeroP>
+          <HeroP>{apidatas.caption}</HeroP>
         </HeroItems>
       </HeroContent>
       {res.map((cat) => {

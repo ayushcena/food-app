@@ -6,15 +6,13 @@ import {
   addItemToCartSpecified,
 } from "../../store/cartSlice";
 const CartItems = ({ cartItem }) => {
-  console.log(cartItem);
   const dispatch = useDispatch();
   const increase = () => {
+    console.log(cartItem);
     dispatch(addItemToCartSpecified(cartItem));
-    console.log("+++");
   };
   const decrease = () => {
     dispatch(RemoveItemToCart(cartItem));
-    console.log("---");
   };
   return (
     <div className="row">
@@ -32,7 +30,6 @@ const CartItems = ({ cartItem }) => {
         <span className="currency">₹</span>
         {cartItem.totalPrice.toFixed(2)}
       </div>
-      {console.log("ffffffffffff", cartItem.quantity)}
     </div>
   );
 };
