@@ -16,13 +16,13 @@ import {
   SocialIconLink
 } from './FooterElements';
 
-const Footer = () => {
+const Footer = ({footdatas}) => {
   return (
     <FooterContainer>
       <FooterWrap>
         <SocialMedia>
           <SocialMediaWrap>
-            <SocialLogo to='/'>The Circle Dream</SocialLogo>
+            <SocialLogo to='/'>{footdatas.brand_name}</SocialLogo>
             <SocialIcons>
               <SocialIconLink href='//www.facebook.com' target='_blank' aria-label='Facebook'>
                 <FaFacebook />

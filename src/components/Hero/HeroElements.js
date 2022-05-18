@@ -46,7 +46,7 @@ export const HeroH1 = styled.h1`
   font-size: clamp(2.5rem, 10vw, 5rem);
   margin-bottom: 1rem;
   box-shadow: 3px 5px #e9ba23;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-weight: 500;
   color: #e31837;
   background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));

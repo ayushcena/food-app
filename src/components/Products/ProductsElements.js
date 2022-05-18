@@ -231,17 +231,17 @@ export const ProductButton = styled.button`
   }
   @media screen and (max-width: 600px) {
     font-size: 0.8rem;
-    padding: 0.4rem 0.6rem;
+    padding: 0.5rem 0.7rem;
   }
 
   @media screen and (max-width: 500px) {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.4rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.7rem;
   }
 
   @media screen and (max-width: 490px) {
     margin-right: -6rem;
-    margin-top: -2rem;
+    margin-top: -2.02rem;
     border-radius: 20px;
   }
 
@@ -250,9 +250,9 @@ export const ProductButton = styled.button`
     border-radius: 20px;
   }
 
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 400px) {
     font-size: 0.7rem;
-    padding: 0.3rem 0.4rem;
+    padding: 0.4rem 0.5rem;
   }
 `;
 

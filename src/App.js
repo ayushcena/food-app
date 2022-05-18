@@ -19,11 +19,11 @@ function App() {
           setDatas(data.data.data);
           console.log(data);
         }).catch(err => {
-          alert("Some error occured");
+          // alert("Some error occured");
           console.log(err);
         })
       } catch (error) {
-        alert("Some error occured");
+        // alert("Some error occured");
         console.log(error);
       }
     }

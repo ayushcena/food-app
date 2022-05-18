@@ -5,16 +5,21 @@ import "./index.css";
 import Form from "react-bootstrap/Form";
 import Button1 from "react-bootstrap/Button";
 import axios from "axios";
+import placedimg from '../../images/orderplaced.gif' 
 
 const Example = ({ totalPrice }) => {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+  function show() {
+    document.getElementById("myImage").style.display="block";
+    // setTimeout(document.getElementById("myDiv").style.display="none",6000);
   }
+
+  // function hide() {
+  //   document.getElementById("myDiv").style.display="none";
+  // }
+
   async function placeOrder() {
     try {
       await axios
@@ -29,6 +34,8 @@ const Example = ({ totalPrice }) => {
       console.log(error);
     }
   }
+  
+
   let price;
   React.useEffect(() => {
     price = localStorage.getItem("price");
@@ -79,7 +86,7 @@ const Example = ({ totalPrice }) => {
             Back to Cart
           </button>
           <form>
-            <div class="mobno">Mobile Number:</div>
+            <div class="mobno">Mobile Number</div>
             <input
               type="tel"
               class="mobbox"
@@ -87,15 +94,26 @@ const Example = ({ totalPrice }) => {
               pattern="[0-9]{10}"
               required
             ></input>
+            <div class="email">E-Mail</div>
+            <input
+              type="email"
+              class="mobbox"
+              name="mailid"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              required
+            ></input>
+            <div id = "myDiv">
+            <img id = "myImage" src = {placedimg} ></img></div>
             <button
-              type="submit"
+              // type="submit"
               className="placeorder"
               id="submitForm"
-              onClick={placeOrder}
+              onClick={show}
             >
               Place Order
             </button>
           </form>
+          <button onClick={show}>show</button>
         </Alert>
       </CSSTransition>
     </div>

@@ -101,7 +101,7 @@ const Hero = ({apidatas}) => {
   }, [res]);
   return (
     <HeroContainer>
-      <Navbar toggle={toggle} toggleCart={toggleCart} />
+      <Navbar toggle={toggle} toggleCart={toggleCart} navdatas={apidatas} />
       <Sidebar
         scroll={scroll}
         onFocusPizza={onFocusPizza}
@@ -119,7 +119,7 @@ const Hero = ({apidatas}) => {
       <HeroContent>
         <HeroItems>
           <HeroH1>
-            <div>The</div> <div>Circle Dream</div>
+            <div>{apidatas.brand_name}</div>
           </HeroH1>
           <HeroP>{apidatas.caption}</HeroP>
         </HeroItems>
@@ -138,7 +138,7 @@ const Hero = ({apidatas}) => {
           />
         );
       })}
-      <Footer />
+      <Footer footdatas={apidatas}/>
     </HeroContainer>
   );
 };
