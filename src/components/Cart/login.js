@@ -102,13 +102,13 @@ const Example = ({ totalPrice }) => {
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               required
             ></input>
-            <div id = "myDiv">
-            <img id = "myImage" src = {placedimg} ></img></div>
+            {/* <div id = "myDiv">
+            <img id = "myImage" src = {placedimg} ></img></div> */}
             <button
               // type="submit"
               className="placeorder"
               id="submitForm"
-              onClick={show}
+              onClick={placeOrder}
             >
               Place Order
             </button>
