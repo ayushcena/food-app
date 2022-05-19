@@ -113,7 +113,7 @@ const Example = ({ totalPrice }) => {
               Place Order
             </button>
           </form>
-          <button onClick={show}>show</button>
+          {/* <button onClick={show}>show</button> */}
         </Alert>
       </CSSTransition>
     </div>
