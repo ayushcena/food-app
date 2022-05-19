@@ -15,7 +15,7 @@ function App() {
   React.useEffect(() => {
     const TriggerFunction = async () => {
       try {
-        await axios.get(`https://api.eatx.in/api/brand-metadata/${y}`).then((data) => {
+        await axios.get(`https://api.eatx.in/api/brand-metadata/tcd`).then((data) => {
           setDatas(data.data.data);
           console.log(data);
         }).catch(err => {
