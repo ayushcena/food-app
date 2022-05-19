@@ -8,7 +8,7 @@ import axios from 'axios';
 function App() {
 
   let hoster = window.location.host;
-  let y = hoster.substring(0, hoster.length - 24);
+  let y = hoster.substring(0, hoster.length - 23);
   console.log(y);
   const [datas, setDatas] = React.useState([]);
 
