@@ -12,6 +12,7 @@ const CartItems = ({ cartItem }) => {
     dispatch(addItemToCartSpecified(cartItem));
   };
   const decrease = () => {
+    console.log(cartItem);
     dispatch(RemoveItemToCart(cartItem));
   };
   return (

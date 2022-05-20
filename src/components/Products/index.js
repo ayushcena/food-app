@@ -37,16 +37,14 @@ const Products = ({
   const [quantity, setQuantity] = useState(1);
   const [showMore, setShowMore] = useState(0);
   const dispatch = useDispatch();
+  console.log(products);
   const cartItem = useSelector(getCartItems);
   const increase = (data) => {
-    dispatch(addItemToCartSpecified(data));
-    console.log("+++");
+    console.log(data);
   };
   const decrease = (data) => {
     dispatch(RemoveItemToCart(data));
-    console.log("---");
   };
-  console.log();
   //const [data2, setdata2] = useState(-1);
   return (
     <>
@@ -74,7 +72,7 @@ const Products = ({
                 <ProductImg
                   src={"https://api.eatx.in/media/" + product.item_data.pic4mob}
 
-                  // alt={product.item_data.name}
+                // alt={product.item_data.name}
                 />
                 <ProductInfo>
                   <ProductTitle> {product.item_data.name} </ProductTitle>
@@ -90,8 +88,8 @@ const Products = ({
                   </ProductDesc>
                   <ProductPrice> ₹{product.cost} </ProductPrice>
                   {(product.extras !== undefined && product.extras !== null) ||
-                  (product.variants !== undefined &&
-                    product.variants !== null) ? (
+                    (product.variants !== undefined &&
+                      product.variants !== null) ? (
                     <>
                       <ProductButton onClick={() => setPopup(index)}>
                         Add to Cart
@@ -100,18 +98,21 @@ const Products = ({
                     </>
                   ) : (
                     <>
+                      <button onClick={() => {
+                        dispatch(addItemToCartSpecified({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
+                      }} className="add">
+                        +
+                      </button>
                       <ProductButton
                         onClick={() => dispatch(addItemToCart({ product }))}
                       >
                         Add to Cart
                       </ProductButton>
-                      {/* <span onClick={decrease} className="remove">
-                    -
-                  </span>
-                    
-                  <span onClick={increase({id:product.id,name:product.item_data.name,price:product.cost,productId:product.id})} className="add">
-                    +
-                  </span> */}
+                      <button onClick={() => {
+                        dispatch(RemoveItemToCart({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
+                      }} className="remove">
+                        -
+                      </button>
                     </>
                   )}
                 </ProductInfo>
