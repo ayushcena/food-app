@@ -22,7 +22,7 @@ const Sidebar = ({ scroll, isOpen, toggle }) => {
         {scrollArray.map((item,index) => (
           
           <SidebarLink onClick={() => item[1].current.scrollIntoView()}>
-            {console.log('aaaaaaaaaaaa',item[1])}
+            {/* {console.log('aaaaaaaaaaaa',item[1])} */}
             {item[1].heading?<Bigtext>{item[0]}</Bigtext>: <Smalltext>{item[0]}</Smalltext>}
            
           </SidebarLink>

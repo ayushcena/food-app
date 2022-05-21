@@ -94,14 +94,6 @@ const Example = ({ totalPrice }) => {
               pattern="[0-9]{10}"
               required
             ></input>
-            <div class="email">E-Mail</div>
-            <input
-              type="email"
-              class="mobbox"
-              name="mailid"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              required
-            ></input>
             {/* <div id = "myDiv">
             <img id = "myImage" src = {placedimg} ></img></div> */}
             <button
