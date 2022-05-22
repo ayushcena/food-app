@@ -3,7 +3,6 @@ import { NavLink as Link } from 'react-router-dom';
 import { FaCartPlus, FaList } from 'react-icons/fa';
 
 export const Nav = styled.nav`
-  background: rgb(0,0,0,0.7);
   height: 60px;
   font-weight: 500;
   position: fixed;

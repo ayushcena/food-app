@@ -76,7 +76,7 @@ const Example = ({ totalPrice }) => {
             Back to Cart
           </button>
           <form>
-            <div class="mobno">Mobile Number</div>
+            <div className="mobno">Mobile Number</div>
             <input
               type="tel"
               class="mobbox"

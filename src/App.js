@@ -13,13 +13,14 @@ function App() {
   let y = hoster.substring(0, hoster.length - 23);
   console.log(y);
   const [datas, setDatas] = React.useState([]);
+  const [colors, setColors] = React.useState([]);
 
   React.useEffect(() => {
     const TriggerFunction = async () => {
       try {
         await axios.get(`https://api.eatx.in/api/brand-metadata/tcd`).then((data) => {
           setDatas(data.data.data);
-          console.log(data);
+          console.log("abcabc",data);
         }).catch(err => {
           // alert("Some error occured");
           console.log(err);
@@ -30,11 +31,27 @@ function App() {
       }
     }
     TriggerFunction();
+
+    const getColor = async () => {
+      try {
+        await axios.get(`https://api.eatx.in/api/eatx-theme/tcd`).then((color) => {
+          setColors(color.data.data.appTheme);
+          console.log("xyzxyz",color);
+        }).catch(err => {
+          // alert("Some error occured");
+          console.log(err);
+        })
+      } catch (error) {
+        // alert("Some error occured");
+        console.log(error);
+      }
+    }
+    getColor();
   }, []);
   return (
     <Router>
       <GlobalStyle />
-      <Hero apidatas={datas} />
+      <Hero apidatas={datas} colorData={colors} />
       <Route path={'/loading'} exact>
         <Animations/>
       </Route>

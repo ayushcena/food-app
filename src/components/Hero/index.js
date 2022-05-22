@@ -15,7 +15,7 @@ import Products from "../Products";
 import axios from "axios";
 import { getCartItems } from "../../store/cartSlice";
 import { useSelector } from "react-redux";
-const Hero = ({apidatas}) => {
+const Hero = ({apidatas, colorData}) => {
   // localstorage.getitem('quantity')
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpens, setIsCartOpens] = useState(false);
@@ -99,9 +99,10 @@ const Hero = ({apidatas}) => {
       });
     });
   }, [res]);
+  
   return (
     <HeroContainer>
-      <Navbar toggle={toggle} toggleCart={toggleCart} navdatas={apidatas} />
+      <Navbar toggle={toggle} toggleCart={toggleCart} navdatas={apidatas} navcolors={colorData}/>
       <Sidebar
         scroll={scroll}
         onFocusPizza={onFocusPizza}
@@ -117,8 +118,8 @@ const Hero = ({apidatas}) => {
         onRemove={onRemove}
       />
       <HeroContent>
-        <HeroItems>
-          <HeroH1>
+        <HeroItems style={{color: colorData.secondary}}>
+          <HeroH1 style={{color: colorData.primary}}>
             <div>{apidatas.brand_name}</div>
           </HeroH1>
           <HeroP>{apidatas.caption}</HeroP>
@@ -135,6 +136,7 @@ const Hero = ({apidatas}) => {
             cartItems={cartItems}
             addonPrice={addonPrice}
             setAddonPrice={setAddonPrice}
+            prodcolors={colorData}
           />
         );
       })}

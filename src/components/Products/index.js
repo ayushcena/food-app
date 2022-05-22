@@ -32,6 +32,7 @@ const Products = ({
   addonPrice,
   setCartItems,
   cartItems,
+  prodcolors
 }) => {
   const [popup, setPopup] = useState(-1);
   const [quantity, setQuantity] = useState(1);
@@ -50,7 +51,7 @@ const Products = ({
     <>
       <div className="hellotesting" ref={scrollRef}></div>
 
-      <ProductsContainer>
+      <ProductsContainer style={{background: prodcolors.background, color:prodcolors.primary }}>
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {

@@ -1,17 +1,17 @@
 import React from 'react';
 import { Nav, NavLink, NavIcon, Bars, Bars1 } from './NavbarElements';
 
-const Navbar = ({toggleCart , toggle, navdatas}) => {
+const Navbar = ({toggleCart , toggle, navdatas, navcolors}) => {
   return (
     <>
-      <Nav>
-        <NavLink to='/'>{navdatas.brand_name}</NavLink>
+      <Nav style={{background: navcolors.background}}>
+        <NavLink style={{color:navcolors.secondary}} to='/'>{navdatas.brand_name}</NavLink>
         
-        <NavIcon onClick={toggleCart}>
+        <NavIcon style={{color:navcolors.secondary}} onClick={toggleCart}>
         {/* {localStorage.getItem('quantity')} */}
           <p className="cart">Cart<Bars1 /></p>
         </NavIcon>
-        <NavIcon onClick={toggle}>
+        <NavIcon style={{color:navcolors.secondary}} onClick={toggle}>
           <p className="menu">Menu</p>
           <Bars />
         </NavIcon>
