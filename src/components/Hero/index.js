@@ -15,7 +15,7 @@ import Products from "../Products";
 import axios from "axios";
 import { getCartItems } from "../../store/cartSlice";
 import { useSelector } from "react-redux";
-const Hero = ({apidatas, colorData}) => {
+const Hero = ({apidatas, colorData,tableNo}) => {
   // localstorage.getitem('quantity')
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpens, setIsCartOpens] = useState(false);
@@ -116,6 +116,7 @@ const Hero = ({apidatas, colorData}) => {
         addOnPrice={addonPrice}
         onAdd={onAdd}
         onRemove={onRemove}
+        tableNo={tableNo}
       />
       <HeroContent>
         <HeroItems style={{color: colorData.secondary}}>

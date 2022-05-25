@@ -13,7 +13,7 @@ import axios from 'axios';
 import {COLORS} from '../colors.js'
 
 const Cart = (props) => {
-  const { cartItems, onAdd, onRemove, isOpen, toggle, addOnPrice } = props;
+  const { cartItems, onAdd, onRemove, isOpen, toggle, addOnPrice,tableNo } = props;
   // const itemsPrice = addOnPrice ? addOnPrice : cartItems.reduce((a, c) => a + c.qty *c.price, 0)
   const itemsPrice = cartItems.reduce((a, c) => {
     if (addOnPrice) {
@@ -75,7 +75,7 @@ const Cart = (props) => {
         )}
           </div>
           {cartItem.length !== 0 && (
-              <Example totalPrice={totalPrice1}/>  
+              <Example tableNo={tableNo} totalPrice={totalPrice1}/>  
         )}
         </aside>
       

@@ -59,9 +59,6 @@ export const slice = createSlice({
                         break;
                     }
                 }
-                if(x){
-                    
-                }
             }
         }, addItemToCartSpecified: (state, action) => {
             let truth = 0;

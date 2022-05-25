@@ -8,7 +8,7 @@ import axios from "axios";
 import placedimg from '../../images/orderplaced.gif'
 import { useHistory } from "react-router-dom";
 
-const Example = ({ totalPrice }) => {
+const Example = ({ totalPrice,tableNo }) => {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const history = useHistory();
@@ -23,6 +23,8 @@ const Example = ({ totalPrice }) => {
 
   async function placeOrder() {
     history.push('/loading');
+    console.log(tableNo);
+    // tableNo yaha pe post req me daal dena
   }
 
 

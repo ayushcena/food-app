@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
+import {useLocation} from 'react-router-dom';
 import axios from 'axios';
 import Animations from './components/Cart/Animation';
 import { Route } from 'react-router-dom';
@@ -9,9 +10,12 @@ import { Route } from 'react-router-dom';
 
 function App() {
 
+  const search = window.location.search;
+  var tableNo = search.substring(9,10);
   let hoster = window.location.host;
   let y = hoster.substring(0, hoster.length - 23);
-  console.log(y);
+  // let tableNo = new URLSearchParams(search).get('tableNo');
+  console.log(hoster);
   const [datas, setDatas] = React.useState([]);
   const [colors, setColors] = React.useState([]);
 
@@ -51,7 +55,7 @@ function App() {
   return (
     <Router>
       <GlobalStyle />
-      <Hero apidatas={datas} colorData={colors} />
+      <Hero apidatas={datas} colorData={colors} tableNo={tableNo}/>
       <Route path={'/loading'} exact>
         <Animations/>
       </Route>
