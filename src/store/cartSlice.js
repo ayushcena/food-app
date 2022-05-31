@@ -3,7 +3,8 @@ const find = require('array-find');
 export const slice = createSlice({
     name: 'cart',
     initialState: {
-        cartItems: []
+        cartItems: [],
+        quantity: 0
     },
     reducers: {
         addItemToCart: (state, action) => {
@@ -13,6 +14,7 @@ export const slice = createSlice({
             for (let i = 0; i < state.cartItems.length; i++) {
                 if (state.cartItems[i].productId === action.payload.product.id) {
                     state.cartItems[i].quantity += 1;
+                    state.quantity += 1;
                     state.cartItems[i].totalPrice += action.payload.product.cost;
                     bool = true;
                 }
@@ -26,6 +28,7 @@ export const slice = createSlice({
                     price: action.payload.product.cost,
                     totalPrice: 1 * action.payload.product.cost
                 });
+                state.quantity += 1;
             }
         },
         RemoveItemToCart: (state, action) => {
@@ -43,6 +46,9 @@ export const slice = createSlice({
                             if (truth === state.cartItems[i].topping.length && truth === action.payload.topping.length) {
                                 si = i;
                                 state.cartItems[si].quantity -= 1;
+                                if(state.quantity){
+                                    state.quantity -= 1;
+                                }
                                 state.cartItems[si].totalPrice -= action.payload.price;
                             }
                         }
@@ -55,6 +61,9 @@ export const slice = createSlice({
                     if (state.cartItems[i].productId === action.payload.productId) {
                         x = false;
                         state.cartItems[i].quantity -= 1;
+                        if(state.quantity){
+                            state.quantity -= 1;
+                        }
                         state.cartItems[i].totalPrice -= action.payload.price;
                         break;
                     }
@@ -78,6 +87,7 @@ export const slice = createSlice({
                                 si = i;
                                 gh = true;
                                 state.cartItems[si].quantity += 1;
+                                state.quantity += 1;
                                 state.cartItems[si].totalPrice += action.payload.price;
                             }
                         }
@@ -89,6 +99,7 @@ export const slice = createSlice({
                 for (let i = 0; i < state.cartItems.length; i++) {
                     if (state.cartItems[i].productId === action.payload.productId) {
                         state.cartItems[i].quantity += 1;
+                        state.quantity += 1;
                         x = false;
                         state.cartItems[i].totalPrice += action.payload.price;
                         break;
@@ -102,6 +113,7 @@ export const slice = createSlice({
                         totalPrice: action.payload.price,
                         productId: action.payload.productId
                     })
+                    state.quantity += 1;
                     console.log(action.payload);
                 }
             }
@@ -129,6 +141,7 @@ export const slice = createSlice({
                             }
                             if ((truth === action.payload.toppingsArr.length) && (truth === state.cartItems[i].topping.length)) {
                                 state.cartItems[i].quantity += 1;
+                                state.quantity += 1;
                                 state.cartItems[i].totalPrice += action.payload.sizePizza.price + priceofTopping;
                                 yes++;
                                 break;
@@ -149,6 +162,7 @@ export const slice = createSlice({
 
                     if (truth) {
                         state.cartItems[si].quantity += 1;
+                        state.quantity += 1;
                         state.cartItems[si].totalPrice += action.payload.sizePizza.price;
                         return;
                     }
@@ -162,6 +176,7 @@ export const slice = createSlice({
                             topping: xyz,
                             totalPrice: priceOfPizza * action.payload.sizePizza.quantity
                         });
+                        state.quantity += 1;
                     }
                 }
             }
@@ -175,6 +190,7 @@ export const slice = createSlice({
                         index = i;
                         state.cartItems[index].totalPrice += state.cartItems[index].price;
                         state.cartItems[index].quantity += 1;
+                        state.quantity += 1;
                     }
                 }
                 if (!mo) {
@@ -186,6 +202,8 @@ export const slice = createSlice({
                         totalPrice: action.payload.addons[j].price * action.payload.addons[j].quantity,
                         productId: action.payload.addons[j].productId
                     })
+                    state.quantity += 1;
+
                     // }
                 }
                 mo = false;
@@ -195,6 +213,6 @@ export const slice = createSlice({
 })
 
 export const getCartItems = (state) => state.cart.cartItems;
-
+export const getQuantitys = (state) => state.cart.quantity;
 export const { addItemToCart, addItemToCartSpecified, pizzaSize, topping, addons, RemoveItemToCart } = slice.actions;
 export default slice.reducer;

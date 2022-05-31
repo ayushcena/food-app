@@ -15,6 +15,7 @@ import Products from "../Products";
 import axios from "axios";
 import { getCartItems } from "../../store/cartSlice";
 import { useSelector } from "react-redux";
+import { getQuantitys } from "../../store/cartSlice";
 const Hero = ({apidatas, colorData,tableNo}) => {
   // localstorage.getitem('quantity')
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +26,8 @@ const Hero = ({apidatas, colorData,tableNo}) => {
   const onFocusPizza = useRef(null);
 
   const cartItem = useSelector(getCartItems);
+  const FinalQ = useSelector(getQuantitys);
+  console.log(FinalQ);
   React.useEffect(() => {
     if (cartItem.length > 0) {
       localStorage.setItem("quantity", cartItem.length);
