@@ -7,10 +7,16 @@ import Button1 from "react-bootstrap/Button";
 import axios from "axios";
 import placedimg from '../../images/orderplaced.gif'
 import { useHistory } from "react-router-dom";
+import MuiPhoneNumber from "material-ui-phone-number";
 
-const Example = ({ totalPrice }) => {
+const Example = ({ totalPrice, logincolors }) => {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
+  const [phone, setPhone] = useState("");
+
+  const handleOnChange = value => {
+    setPhone(value);
+  };
   const history = useHistory();
   function show() {
     document.getElementById("myImage").style.display = "block";
@@ -46,7 +52,7 @@ const Example = ({ totalPrice }) => {
           {totalPrice ? (
             <>
               <div className="bottom">
-                <button
+                <button style={{color:logincolors.secondary, backgroundColor:logincolors.primary}}
                   className="checkout"
                   onClick={() => setShowMessage(true)}
                 >
@@ -72,21 +78,16 @@ const Example = ({ totalPrice }) => {
           // dismissible
           onClose={() => setShowMessage(false)}
         >
-          <button className="backtocart" onClick={() => setShowMessage(false)}>
+          <button style={{color:logincolors.secondary, backgroundColor:logincolors.primary}} className="backtocart" onClick={() => setShowMessage(false)}>
             Back to Cart
           </button>
           <form>
-            <div className="mobno">Mobile Number</div>
-            <input
-              type="tel"
-              class="mobbox"
-              name="contactno"
-              pattern="[0-9]{10}"
-              required
-            ></input>
+            <div style={{color:logincolors.background}} className="mobno">Mobile Number</div>
+            <MuiPhoneNumber style={{marginTop:'40px', marginLeft:'30px',marginBottom:'20px',color:logincolors.background}} defaultCountry={"in"} onChange={handleOnChange}
+             />
             {/* <div id = "myDiv">
             <img id = "myImage" src = {placedimg} ></img></div> */}
-            <button
+            <button style={{color:logincolors.secondary, backgroundColor:logincolors.primary}} 
               // type="submit"
               className="placeorder"
               id="submitForm"

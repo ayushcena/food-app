@@ -213,7 +213,6 @@ export const ProductButton = styled.button`
   padding: 0.4rem 1rem;
   border: none;
   background: #e31837;
-  color: #fff;
   transition: 0.2 ease-out;
   display: flex;
   flex-direction: row;

@@ -5,7 +5,7 @@ import {
   RemoveItemToCart,
   addItemToCartSpecified,
 } from "../../store/cartSlice";
-const CartItems = ({ cartItem }) => {
+const CartItems = ({ cartItem, givenitemcolors }) => {
   const dispatch = useDispatch();
   const increase = () => {
     console.log(cartItem);
@@ -17,18 +17,18 @@ const CartItems = ({ cartItem }) => {
   };
   return (
     <div className="row">
-      <div className="col-2">{cartItem.name}</div>
+      <div className="col-2" style={{color: givenitemcolors.background}}>{cartItem.name}</div>
       <div className="col-4">
-        <span onClick={decrease} className="remove">
+        <span style={{color: givenitemcolors.background, backgroundColor: givenitemcolors.primary}} onClick={decrease} className="remove">
           -
         </span>
-        <b className="quant">{cartItem.quantity}</b>
-        <span onClick={increase} className="add">
+        <b style={{color: givenitemcolors.background}} className="quant">{cartItem.quantity}</b>
+        <span style={{color: givenitemcolors.background, backgroundColor: givenitemcolors.tertiary}} onClick={increase} className="add">
           +
         </span>
       </div>
-      <div className="col-3">
-        <span className="currency">₹</span>
+      <div style={{color: givenitemcolors.background}} className="col-3">
+        <span style={{color: givenitemcolors.background}} className="currency">₹</span>
         {cartItem.totalPrice.toFixed(2)}
       </div>
     </div>
