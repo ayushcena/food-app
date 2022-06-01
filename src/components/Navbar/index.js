@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, NavLink, NavIcon, Bars, Bars1 } from './NavbarElements';
 
-const Navbar = ({toggleCart , toggle, navdatas, navcolors}) => {
+const Navbar = ({toggleCart , toggle, navdatas, navcolors, finalquant}) => {
   return (
     <>
       <Nav style={{background: navcolors.background}}>
@@ -9,7 +9,7 @@ const Navbar = ({toggleCart , toggle, navdatas, navcolors}) => {
         
         <NavIcon style={{color:navcolors.secondary}} onClick={toggleCart}>
         {/* {localStorage.getItem('quantity')} */}
-          <p className="cart">Cart<Bars1 /></p>
+          <p className="cart"> Cart<Bars1 /></p>
         </NavIcon>
         <NavIcon style={{color:navcolors.secondary}} onClick={toggle}>
           <p className="menu">Menu</p>

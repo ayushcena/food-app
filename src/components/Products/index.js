@@ -56,11 +56,7 @@ const Products = ({
     <>
       <div className="hellotesting" ref={scrollRef}></div>
 
-<<<<<<< HEAD
       <ProductsContainer style={{background: prodcolors.background, color:prodcolors.secondary }}>
-=======
-      <ProductsContainer style={{ background: prodcolors.background, color: prodcolors.primary }}>
->>>>>>> 866143acbc4453ed8ab420f56516bf149e61fe46
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {

@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { GlobalStyle } from "./globalStyles";
-import Hero from "./components/Hero";
-import axios from "axios";
-import Animations from "./components/Cart/Animation";
-import { Route } from "react-router-dom";
-
-function App() {
-=======
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle } from './globalStyles';
@@ -23,7 +12,6 @@ function App() {
 
   const search = window.location.search;
   var tableNo = search.substring(9,10);
->>>>>>> 866143acbc4453ed8ab420f56516bf149e61fe46
   let hoster = window.location.host;
   let y = hoster.substring(0, hoster.length - 23);
   // let tableNo = new URLSearchParams(search).get('tableNo');
@@ -110,15 +98,9 @@ function App() {
   return (
     <Router>
       <GlobalStyle />
-<<<<<<< HEAD
-      <Hero apidatas={datas} colorData={colors} bannerImg={banners} />
-      <Route path={"/loading"} exact>
-        <Animations />
-=======
-      <Hero apidatas={datas} colorData={colors} tableNo={tableNo}/>
+      <Hero apidatas={datas} colorData={colors} tableNo={tableNo} bannerImg={banners}/>
       <Route path={'/loading'} exact>
         <Animations/>
->>>>>>> 866143acbc4453ed8ab420f56516bf149e61fe46
       </Route>
     </Router>
   );
