@@ -9,7 +9,11 @@ import placedimg from '../../images/orderplaced.gif'
 import { useHistory } from "react-router-dom";
 import MuiPhoneNumber from "material-ui-phone-number";
 
+<<<<<<< HEAD
 const Example = ({ totalPrice, logincolors }) => {
+=======
+const Example = ({ totalPrice,tableNo }) => {
+>>>>>>> 866143acbc4453ed8ab420f56516bf149e61fe46
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const [phone, setPhone] = useState("");
@@ -29,6 +33,8 @@ const Example = ({ totalPrice, logincolors }) => {
 
   async function placeOrder() {
     history.push('/loading');
+    console.log(tableNo);
+    // tableNo yaha pe post req me daal dena
   }
 
 

@@ -15,7 +15,12 @@ import Products from "../Products";
 import axios from "axios";
 import { getCartItems } from "../../store/cartSlice";
 import { useSelector } from "react-redux";
+<<<<<<< HEAD
 const Hero = ({apidatas, colorData, bannerImg}) => {
+=======
+import { getQuantitys } from "../../store/cartSlice";
+const Hero = ({apidatas, colorData,tableNo}) => {
+>>>>>>> 866143acbc4453ed8ab420f56516bf149e61fe46
   // localstorage.getitem('quantity')
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpens, setIsCartOpens] = useState(false);
@@ -25,6 +30,8 @@ const Hero = ({apidatas, colorData, bannerImg}) => {
   const onFocusPizza = useRef(null);
 
   const cartItem = useSelector(getCartItems);
+  const FinalQ = useSelector(getQuantitys);
+  console.log(FinalQ);
   React.useEffect(() => {
     if (cartItem.length > 0) {
       localStorage.setItem("quantity", cartItem.length);
@@ -116,7 +123,11 @@ const Hero = ({apidatas, colorData, bannerImg}) => {
         addOnPrice={addonPrice}
         onAdd={onAdd}
         onRemove={onRemove}
+<<<<<<< HEAD
         cartcolors={colorData}
+=======
+        tableNo={tableNo}
+>>>>>>> 866143acbc4453ed8ab420f56516bf149e61fe46
       />
       <HeroContent>
         <HeroItems style={{color: colorData.secondary}}>
