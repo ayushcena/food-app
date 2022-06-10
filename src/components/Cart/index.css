@@ -668,5 +668,40 @@ hr.lowerline{
   margin-top: 100px;
 }
 
+.input {
+  position: relative;
+}
+  
+  .input__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5); */
+    margin-top:-5px;
+    margin-left: 35px;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    background: #FFC500;
+    transition: transform 120ms ease-in;
+    font-weight: bold;
+    line-height: 1;
+    font-size: 12px;
+  }
+  .input__field {
+    margin-top: 5px;
+    margin-left: 28px;
+    box-sizing: border-box;
+    display: block;
+    width: 270px;
+    border: 3px solid black;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: transparent;
+    border-radius: var(--size-radius);
+    margin-bottom: 15px;
+  }
+
 
 

@@ -31,6 +31,7 @@
     "react-router": "^5.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
+    "react-spring": "^9.4.5",
     "react-transition-group": "^4.4.2",
     "react-use-cart": "^1.13.0",
     "read-scripts": "^1.1.0",

@@ -84,9 +84,11 @@ const Example = ({ totalPrice, logincolors, tableNo }) => {
             Back to Cart
           </button>
           <form>
-            <div style={{color:logincolors.background}} className="mobno">Mobile Number</div>
-            <MuiPhoneNumber style={{marginTop:'40px', marginLeft:'30px',marginBottom:'20px',color:logincolors.background}} defaultCountry={"in"} onChange={handleOnChange}
-             />
+          
+<label class="input">
+      <input class="input__field" type="tel" placeholder=" " pattern= "[0-9]{10}"/>
+      <span class="input__label">Mobile Number</span>
+    </label>
             {/* <div id = "myDiv">
             <img id = "myImage" src = {placedimg} ></img></div> */}
             <button style={{color:logincolors.secondary, backgroundColor:logincolors.primary}} 

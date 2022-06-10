@@ -21,7 +21,6 @@ import {
   RemoveItemToCart,
   addItemToCartSpecified,
 } from "../../store/cartSlice";
-const find = require('array-find');
 
 const Products = ({
   heading,
@@ -39,12 +38,8 @@ const Products = ({
   const [quantity, setQuantity] = useState(1);
   const [showMore, setShowMore] = useState(0);
   const dispatch = useDispatch();
-  let cartItem = useSelector(getCartItems);
-  // console.log(cartItem);
-  let ids = [];
-  for (let i = 0; i < cartItem.length; i++) {
-    ids.push(cartItem[i].productId);
-  }
+  console.log(products);
+  const cartItem = useSelector(getCartItems);
   const increase = (data) => {
     console.log(data);
   };
@@ -60,7 +55,6 @@ const Products = ({
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
-            // console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
@@ -101,12 +95,12 @@ const Products = ({
                       <ProductButton    style={{color: prodcolors.secondary, background: prodcolors.primary}} onClick={() => setPopup(index)}>
                         Add to Cart
                       </ProductButton>
-                      <Customize>customizable</Customize>
+                      <Customize>customisable</Customize>
                     </>
                   ) : (
                     <>
                       <button onClick={() => {
-                        dispatch(addItemToCartSpecified({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
+                        dispatch(addItemToCartSpecified({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
                       }} className="add">
                         +
                       </button>
@@ -116,7 +110,7 @@ const Products = ({
                         Add to Cart
                       </ProductButton>
                       <button onClick={() => {
-                        dispatch(RemoveItemToCart({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
+                        dispatch(RemoveItemToCart({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
                       }} className="remove">
                         -
                       </button>
