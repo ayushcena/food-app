@@ -38,8 +38,21 @@ const Products = ({
   const [quantity, setQuantity] = useState(1);
   const [showMore, setShowMore] = useState(0);
   const dispatch = useDispatch();
-  console.log(products);
-  const cartItem = useSelector(getCartItems);
+  let cartItem = useSelector(getCartItems);
+  console.log(cartItem);
+  let ids = [];
+  for (let i = 0; i < cartItem.length; i++) {
+    ids.push(cartItem[i].productId);
+  }
+  function finder(ID) {
+    for (let i = 0; i < cartItem.length; i++) {
+      const element = cartItem[i];
+      if (element.productId === ID) {
+        return element;
+      }
+    }
+    return false;
+  }
   const increase = (data) => {
     console.log(data);
   };
@@ -55,6 +68,7 @@ const Products = ({
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
+            console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
@@ -92,10 +106,15 @@ const Products = ({
                     (product.variants !== undefined &&
                       product.variants !== null) ? (
                     <>
-                      <ProductButton    style={{color: prodcolors.secondary, background: prodcolors.primary}} onClick={() => setPopup(index)}>
-                        Add to Cart
-                      </ProductButton>
-                      <Customize>customisable</Customize>
+                      {finder(product.id) ? (<>
+                        <ProductButton style={{color: prodcolors.secondary, background: prodcolors.primary}} onClick={() => setPopup(index)}>
+                          {finder(product.id).quantity > 0 ? (finder(product.id).quantity) : (<>Add To Cart</>)}
+                        </ProductButton></>) : (<>
+                          <ProductButton onClick={() => setPopup(index)}>
+                            Add to Cart
+                          </ProductButton>
+                        </>)}
+                      <Customize>customizable</Customize>
                     </>
                   ) : (
                     <>
@@ -104,16 +123,30 @@ const Products = ({
                       }} className="add">
                         +
                       </button>
-                      <ProductButton style={{color: prodcolors.secondary, background: prodcolors.primary,}} 
-                        onClick={() => dispatch(addItemToCart({ product }))}
-                      >
-                        Add to Cart
-                      </ProductButton>
-                      <button onClick={() => {
-                        dispatch(RemoveItemToCart({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
-                      }} className="remove">
-                        -
-                      </button>
+                      {finder(product.id) ? (
+                        <ProductButton style={{color: prodcolors.secondary, background: prodcolors.primary,}}
+                          onClick={() => dispatch(addItemToCart({ product }))}
+                        >
+                          {finder(product.id).quantity > 0 ? (finder(product.id).quantity) : (<>Add To Cart</>)}
+                        </ProductButton>
+                      ) : (
+                        <ProductButton
+                          onClick={() => dispatch(addItemToCart({ product }))}
+                        >
+                          Add to Cart
+                        </ProductButton>
+                      )}
+                      {finder(product.id).quantity > 0 ? (
+                        <button onClick={() => {
+                          dispatch(RemoveItemToCart({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
+                        }} className="remove">
+                          -
+                        </button>
+                      ) : (
+                        <button className="remove">
+                          -
+                        </button>
+                      )}
                     </>
                   )}
                 </ProductInfo>
