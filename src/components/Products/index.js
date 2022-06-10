@@ -40,10 +40,19 @@ const Products = ({
   const [showMore, setShowMore] = useState(0);
   const dispatch = useDispatch();
   let cartItem = useSelector(getCartItems);
-  // console.log(cartItem);
+  console.log(cartItem);
   let ids = [];
   for (let i = 0; i < cartItem.length; i++) {
     ids.push(cartItem[i].productId);
+  }
+  function finder(ID) {
+    for (let i = 0; i < cartItem.length; i++) {
+      const element = cartItem[i];
+      if (element.productId === ID) {
+        return element;
+      }
+    }
+    return false;
   }
   const increase = (data) => {
     console.log(data);
@@ -60,7 +69,7 @@ const Products = ({
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
-            // console.log(product);
+            console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
@@ -98,9 +107,14 @@ const Products = ({
                     (product.variants !== undefined &&
                       product.variants !== null) ? (
                     <>
-                      <ProductButton onClick={() => setPopup(index)}>
-                        Add to Cart
-                      </ProductButton>
+                      {finder(product.id) ? (<>
+                        <ProductButton onClick={() => setPopup(index)}>
+                          {finder(product.id).quantity > 0 ? (finder(product.id).quantity) : (<>Add To Cart</>)}
+                        </ProductButton></>) : (<>
+                          <ProductButton onClick={() => setPopup(index)}>
+                            Add to Cart
+                          </ProductButton>
+                        </>)}
                       <Customize>customizable</Customize>
                     </>
                   ) : (
@@ -110,16 +124,30 @@ const Products = ({
                       }} className="add">
                         +
                       </button>
-                      <ProductButton
-                        onClick={() => dispatch(addItemToCart({ product }))}
-                      >
-                        Add to Cart
-                      </ProductButton>
-                      <button onClick={() => {
-                        dispatch(RemoveItemToCart({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
-                      }} className="remove">
-                        -
-                      </button>
+                      {finder(product.id) ? (
+                        <ProductButton
+                          onClick={() => dispatch(addItemToCart({ product }))}
+                        >
+                          {finder(product.id).quantity > 0 ? (finder(product.id).quantity) : (<>Add To Cart</>)}
+                        </ProductButton>
+                      ) : (
+                        <ProductButton
+                          onClick={() => dispatch(addItemToCart({ product }))}
+                        >
+                          Add to Cart
+                        </ProductButton>
+                      )}
+                      {finder(product.id).quantity > 0 ? (
+                        <button onClick={() => {
+                          dispatch(RemoveItemToCart({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
+                        }} className="remove">
+                          -
+                        </button>
+                      ) : (
+                        <button className="remove">
+                          -
+                        </button>
+                      )}
                     </>
                   )}
                 </ProductInfo>
