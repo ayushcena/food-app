@@ -1,12 +1,9 @@
 import "./addons.css";
 import React from "react";
-import Sizes from "./Sizes";
 import Info from "./Info";
 import Info2 from "./Info2";
 import Info3 from "./Info3";
-import Toppings from "./Toppings";
 import axios from "axios";
-import Otheradds from "./Otheradds";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';

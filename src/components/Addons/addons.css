@@ -17,8 +17,8 @@ div.container{
 
 .close{
     cursor: pointer;
-    /* margin-right:345px; */
-    margin-top: -47px;
+    margin-right:335px;
+    margin-top: -49px;
     color: black;
     margin-bottom: 10px;
     font-size: 25px;
@@ -236,5 +236,32 @@ div.otherAddsHead{
     div.otherAddsHead{
         font-size: 20px;
         margin-left: -40vw;
+    }
+    .footer{
+        padding-bottom: 10px;
+        padding-top: 10px;
+        background-color: white;
+        padding-right: 30vw;
+        padding-left: 20vw;
+    }
+    .totalcost{
+        font-size:17px;
+        margin-left: -15vw;
+    }
+    .totalprice{
+        font-size: 17px;
+    }
+    .addcart{
+        margin-left: 38vw;
+        margin-right: -20vw;
+        font-size: 13px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        margin-top: -32px;
+        /* margin-top: -39px; */
+        /* margin-right: -100px; */
+        /* margin-right: 80px; */
+        /* margin-left: 150px; */
+        /* margin-top: -10px; */
     }
   }

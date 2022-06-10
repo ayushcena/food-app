@@ -72,7 +72,7 @@ const Hero = ({apidatas, colorData,tableNo, bannerImg}) => {
       await axios
         .get("https://api.eatx.in/api/v3/item/items/130/?key=tcd")
         .then((response) => {
-          console.log(response.data);
+          console.log("itemsssssssssss",response.data);
           setRes(response.data);
         })
         .catch((err) => {

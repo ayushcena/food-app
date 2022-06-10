@@ -96,7 +96,7 @@ const Products = ({
                       product.variants !== null) ? (
                     <>
                       {finder(product.id) ? (<>
-                        <ProductButton onClick={() => setPopup(index)}>
+                        <ProductButton style={{color: prodcolors.secondary, background: prodcolors.primary}} onClick={() => setPopup(index)}>
                           {finder(product.id).quantity > 0 ? (finder(product.id).quantity) : (<>Add To Cart</>)}
                         </ProductButton></>) : (<>
                           <ProductButton onClick={() => setPopup(index)}>
@@ -108,12 +108,12 @@ const Products = ({
                   ) : (
                     <>
                       <button onClick={() => {
-                        dispatch(addItemToCartSpecified({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
+                        dispatch(addItemToCartSpecified({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
                       }} className="add">
                         +
                       </button>
                       {finder(product.id) ? (
-                        <ProductButton
+                        <ProductButton style={{color: prodcolors.secondary, background: prodcolors.primary,}}
                           onClick={() => dispatch(addItemToCart({ product }))}
                         >
                           {finder(product.id).quantity > 0 ? (finder(product.id).quantity) : (<>Add To Cart</>)}
