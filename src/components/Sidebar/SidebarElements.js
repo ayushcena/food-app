@@ -14,12 +14,12 @@ export const SidebarContainer = styled.aside`
   right: ${({ isOpen }) => (isOpen ? '0' : '-1000px')};
 
   @media screen and (max-width: 400px) {
-    width: 100%;
+    width: 90%;
   }
 `;
 
 export const CloseIcon = styled(FaTimes)`
-  color: #000;
+  color: black;
 `;
 
 export const Icon = styled.div`

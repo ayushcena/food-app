@@ -65,7 +65,7 @@ const Products = ({
     <>
       <div className="hellotesting" ref={scrollRef}></div>
 
-      <ProductsContainer style={{ background: prodcolors.background, color: prodcolors.primary }}>
+      <ProductsContainer style={{background: prodcolors.background, color:prodcolors.secondary }}>
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
@@ -91,8 +91,8 @@ const Products = ({
                 // alt={product.item_data.name}
                 />
                 <ProductInfo>
-                  <ProductTitle> {product.item_data.name} </ProductTitle>
-                  <ProductDesc>
+                  <ProductTitle style={{color: prodcolors.secondarybg}}> {product.item_data.name} </ProductTitle>
+                  <ProductDesc style={{color: prodcolors.secondary}}>
                     {/* {showMore ? product.item_data.description : `${product.item_data.description.substring(0, 25)}`}
                     <span 
                       className="btn"
@@ -102,7 +102,7 @@ const Products = ({
                     </span> */}{" "}
                     {product.item_data.description}
                   </ProductDesc>
-                  <ProductPrice> ₹{product.cost} </ProductPrice>
+                  <ProductPrice style={{color: prodcolors.secondary}}> ₹{product.cost} </ProductPrice>
                   {(product.extras !== undefined && product.extras !== null) ||
                     (product.variants !== undefined &&
                       product.variants !== null) ? (

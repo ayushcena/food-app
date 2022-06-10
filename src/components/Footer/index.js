@@ -16,31 +16,31 @@ import {
   SocialIconLink
 } from './FooterElements';
 
-const Footer = ({footdatas}) => {
+const Footer = ({footdatas, footcolors}) => {
   return (
     <FooterContainer>
       <FooterWrap>
         <SocialMedia>
           <SocialMediaWrap>
-            <SocialLogo to='/'>{footdatas.brand_name}</SocialLogo>
+            <SocialLogo style={{color:footcolors.secondary}} to='/'>{footdatas.brand_name}</SocialLogo>
             <SocialIcons>
-              <SocialIconLink href='//www.facebook.com' target='_blank' aria-label='Facebook'>
+              <SocialIconLink style={{color:footcolors.secondary}} href='//www.facebook.com' target='_blank' aria-label='Facebook'>
                 <FaFacebook />
               </SocialIconLink>
-              <SocialIconLink href='//www.instagram.com' target='_blank' aria-label='Instagram'>
+              <SocialIconLink style={{color:footcolors.secondary}} href='//www.instagram.com' target='_blank' aria-label='Instagram'>
                 <FaInstagram />
               </SocialIconLink>
-              <SocialIconLink href='//www.youtube.com' target='_blank' aria-label='Youtube'>
+              <SocialIconLink style={{color:footcolors.secondary}} href='//www.youtube.com' target='_blank' aria-label='Youtube'>
                 <FaYoutube />
               </SocialIconLink>
               <SocialIconLink
-                href='//www.twitter.com'
+                style={{color:footcolors.secondary}} href='//www.twitter.com'
                 target='_blank'
                 aria-label='Twitter'
               >
                 <FaTwitter />
               </SocialIconLink>
-              <SocialIconLink href='//www.linkedin.com' target='_blank' aria-label='Linkedin'>
+              <SocialIconLink style={{color:footcolors.secondary}} href='//www.linkedin.com' target='_blank' aria-label='Linkedin'>
                 <FaLinkedin />
               </SocialIconLink>
             </SocialIcons>
