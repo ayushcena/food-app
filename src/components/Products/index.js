@@ -21,7 +21,6 @@ import {
   RemoveItemToCart,
   addItemToCartSpecified,
 } from "../../store/cartSlice";
-const find = require('array-find');
 
 const Products = ({
   heading,
@@ -29,18 +28,14 @@ const Products = ({
   onAdd,
   scrollRef,
   setAddonPrice,
-  onFocusPizza,
   addonPrice,
   setCartItems,
   cartItems,
   prodcolors
 }) => {
   const [popup, setPopup] = useState(-1);
-  const [quantity, setQuantity] = useState(1);
-  const [showMore, setShowMore] = useState(0);
   const dispatch = useDispatch();
   let cartItem = useSelector(getCartItems);
-  console.log(cartItem);
   let ids = [];
   for (let i = 0; i < cartItem.length; i++) {
     ids.push(cartItem[i].productId);
@@ -54,12 +49,6 @@ const Products = ({
     }
     return false;
   }
-  const increase = (data) => {
-    console.log(data);
-  };
-  const decrease = (data) => {
-    dispatch(RemoveItemToCart(data));
-  };
   //const [data2, setdata2] = useState(-1);
   return (
     <>
@@ -69,7 +58,6 @@ const Products = ({
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
-            console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
                 {popup != -1 ? (
