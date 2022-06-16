@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import Cart from "../Cart";
-import data from "../Products/data";
 import Footer from "../Footer";
 import {
   HeroContainer,
@@ -39,7 +38,6 @@ const Hero = ({apidatas, colorData,tableNo, bannerImg}) => {
   const toggleCart = () => {
     setIsCartOpens(!isCartOpens);
   };
-  const { products } = data;
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
     // console.log("inside on add func");

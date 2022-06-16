@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-const find = require('array-find');
+
 export const slice = createSlice({
     name: 'cart',
     initialState: {
@@ -56,10 +56,8 @@ export const slice = createSlice({
                 }
             }
             else {
-                var x = true;
                 for (let i = 0; i < state.cartItems.length; i++) {
                     if (state.cartItems[i].productId === action.payload.productId) {
-                        x = false;
                         state.cartItems[i].quantity -= 1;
                         if(state.quantity){
                             state.quantity -= 1;
@@ -72,7 +70,6 @@ export const slice = createSlice({
         }, addItemToCartSpecified: (state, action) => {
             let truth = 0;
             let si = 0;
-            let gh = false;
             console.log(action.payload);
             if (action.payload.topping) {
                 for (let i = 0; i < state.cartItems.length; i++) {
@@ -85,7 +82,6 @@ export const slice = createSlice({
                             }
                             if (truth === state.cartItems[i].topping.length && truth === action.payload.topping.length) {
                                 si = i;
-                                gh = true;
                                 state.cartItems[si].quantity += 1;
                                 state.quantity += 1;
                                 state.cartItems[si].totalPrice += action.payload.price;
@@ -121,11 +117,7 @@ export const slice = createSlice({
             let truth = 0;
             let si = 0;
             let yes = 0;
-            let priceofAddons = 0;
             let priceofTopping = 0;
-            for (let i = 0; i < action.payload.addons.length; i++) {
-                priceofAddons += action.payload.addons[i].price;
-            }
             if (action.payload.sizePizza.size !== undefined && action.payload.sizePizza.name && action.payload.sizePizza.size !== null) {
                 let priceOfPizza = 0;
                 let xyz = [];
@@ -182,7 +174,6 @@ export const slice = createSlice({
             }
             var mo = false;
             var index = 0;
-            var idx = 0;
             for (let j = 0; j < action.payload.addons.length; j++) {
                 for (var i = 0; i < state.cartItems.length; i++) {
                     if (action.payload.addons[j].drink === state.cartItems[i].name) {
