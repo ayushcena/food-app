@@ -39,7 +39,7 @@ const Cart = (props) => {
       (Math.round(totalPrice1 * 100) / 100).toFixed(2);
     }
   },[cartItem]);
-
+  console.log(cartItem);
   React.useEffect(()=>{
     localStorage.setItem('price',totalPrice1);
     localStorage.setItem('quantity',quantity);

@@ -49,6 +49,7 @@ const Products = ({
     }
     return false;
   }
+  // console.log(products);
   //const [data2, setdata2] = useState(-1);
   return (
     <>
@@ -58,9 +59,10 @@ const Products = ({
         <ProductsHeading> {heading} </ProductsHeading>
         <ProductWrapper>
           {products.map((product, index) => {
+            // console.log(product);
             return (
               <ProductCard key={index} onAdd={onAdd}>
-                {popup != -1 ? (
+                {popup !== -1 ? (
                   <Addons
                     pizza={products[popup]}
                     setPopup={setPopup}
