@@ -118,11 +118,15 @@ const Products = ({
                     </>
                   ) : (
                     <>
-                      <button onClick={() => {
-                        dispatch(addItemToCartSpecified({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
-                      }} className="add">
-                        +
-                      </button>
+                      {finder(product.id).quantity > 0 ? (
+                        <button onClick={() => {
+                          dispatch(addItemToCartSpecified({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
+                        }} className="add">
+                          +
+                        </button>
+                      ) : (
+                        console.log()
+                      )}
                       {finder(product.id) ? (
                         <ProductButton style={{color: prodcolors.secondary, background: prodcolors.primary,}}
                           onClick={() => dispatch(addItemToCart({ product }))}
@@ -143,9 +147,7 @@ const Products = ({
                           -
                         </button>
                       ) : (
-                        <button className="remove">
-                          -
-                        </button>
+                       console.log()
                       )}
                     </>
                   )}
