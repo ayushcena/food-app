@@ -4,7 +4,7 @@ import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
 import {useLocation} from 'react-router-dom';
 import axios from 'axios';
-import Animations from './components/Cart/Animation';
+// import Animations from './components/Cart/Animation';
 import { Route } from 'react-router-dom';
 
 
@@ -99,9 +99,9 @@ function App() {
     <Router>
       <GlobalStyle />
       <Hero apidatas={datas} colorData={colors} tableNo={tableNo} bannerImg={banners}/>
-      <Route path={'/loading'} exact>
+      {/* <Route path={'/loading'} exact>
         <Animations/>
-      </Route>
+      </Route> */}
     </Router>
   );
 }
