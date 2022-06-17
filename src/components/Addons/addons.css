@@ -17,7 +17,7 @@ div.container{
 
 .close{
     cursor: pointer;
-    margin-right:335px;
+    /* margin-right:335px; */
     margin-top: -49px;
     color: black;
     margin-bottom: 10px;

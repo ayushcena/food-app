@@ -11,7 +11,7 @@ function Info(props) {
       <div className="row">
         <div className="col-md-4 col-lg-4 col-sm-4">
           <label>
-            <input type="radio" name="product" className="card-input-element" checked/>
+            <input type="radio" name="product" className="card-input-element"/>
  
             <div
               className="panel panel-default card-input"
