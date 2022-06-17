@@ -199,9 +199,10 @@ hr.lowerline{
     box-shadow: 2px 0px 3px #00000052;
 }
 
-.alert{
-  /* margin-right:180px; */
-}
+/* .alert{
+  margin-right:180px;
+} */
+
 .alert-enter {
   opacity: 0;
   transform: scale(0.9);
