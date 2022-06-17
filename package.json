@@ -1,0 +1,29 @@
+{
+  "name": "the-circle-dream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "install": "^0.13.0",
+    "material-ui": "^0.20.2",
+    "material-ui-phone-number": "^3.0.0",
+    "npm": "^8.11.0",
+    "react-phone-number-input": "^3.2.2",
+    "react-spring": "^9.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushcena/food-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayushcena/food-app/issues"
+  },
+  "homepage": "https://github.com/ayushcena/food-app#readme"
+}
