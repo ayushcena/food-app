@@ -6,7 +6,8 @@ import {useLocation} from 'react-router-dom';
 import axios from 'axios';
 // import Animations from './components/Cart/Animation';
 import { Route } from 'react-router-dom';
-
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
+import Loader from './components/Loader';
 
 function App() {
 
@@ -95,7 +96,11 @@ function App() {
     };
     getBanner();
   }, []);
-  return (
+
+  const {loading} = useLoadingWithRefresh();
+  return loading ? (
+    <Loader message="Loading..."/>
+  ) : (
     <Router>
       <GlobalStyle />
       <Hero apidatas={datas} colorData={colors} tableNo={tableNo} bannerImg={banners}/>
