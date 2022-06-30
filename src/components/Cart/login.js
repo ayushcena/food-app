@@ -32,7 +32,6 @@ const Example = ({ totalPrice, logincolors, tableNo }) => {
 
   }
   async function placeOrder() {
-    history.push("/loading");
     console.log(tableNo);
     try {
       await axios.post("https://api.eatx.in/api/user/precheckout/",{
@@ -53,6 +52,7 @@ const Example = ({ totalPrice, logincolors, tableNo }) => {
           "Authorization":"Token 7a5a458544d9b210bdcf6372c6804ad01263f57e"
         }
       }).then((data)=>{
+        history.push("/loading");
         window.alert("Order Placed");
       }).catch((err)=>{
         window.alert(err);

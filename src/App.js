@@ -105,7 +105,7 @@ function App() {
       <GlobalStyle />
       <Hero apidatas={datas} colorData={colors} tableNo={tableNo} bannerImg={banners}/>
       <Route path={'/loading'} exact>
-        <Animations/>
+        <Loader message="Loading..."/>
       </Route>
     </Router>
   );
