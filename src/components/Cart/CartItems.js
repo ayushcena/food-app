@@ -22,7 +22,7 @@ const CartItems = ({ cartItem, givenitemcolors }) => {
         <span style={{color: givenitemcolors.background, backgroundColor: givenitemcolors.primary}} onClick={decrease} className="remove">
           -
         </span>
-        <b style={{color: givenitemcolors.background}} className="quant">{cartItem.quantity}</b>
+        <b style={{color: givenitemcolors.background}} className="quante">{cartItem.quantity}</b>
         <span style={{color: givenitemcolors.background, backgroundColor: givenitemcolors.tertiary}} onClick={increase} className="add">
           +
         </span>

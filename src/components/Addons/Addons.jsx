@@ -125,7 +125,7 @@ const Addons = ({ pizza, toppings, others, setPopup, setAddonPrice, addonPrice, 
         <span className="totalcost">Total Cost:</span>
         <span className="totalprice">₹{total}</span>
         <div onClick={() => {
-          dispatch(pizzaSize({ toppingsArr, sizePizza, addons }));
+          dispatch(pizzaSize({ toppingsArr, sizePizza, addons }, setPopup(() => -1)));
         }} className="addcart">Add to Cart</div>
       </div>
 

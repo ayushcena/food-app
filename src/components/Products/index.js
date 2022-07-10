@@ -21,6 +21,7 @@ import {
   RemoveItemToCart,
   addItemToCartSpecified,
 } from "../../store/cartSlice";
+import './index.css';
 
 const Products = ({
   heading,
@@ -109,20 +110,33 @@ const Products = ({
                     </>
                   ) : (
                     <>
+                      
+                      
+                      {finder(product.id).quantity > 0 ? (
+                        <button onClick={() => {
+                          dispatch(RemoveItemToCart({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
+                        }} className="removenew">
+                          -
+                        </button>
+                      ) : (
+                       console.log()
+                      )}
+
                       {finder(product.id).quantity > 0 ? (
                         <button onClick={() => {
                           dispatch(addItemToCartSpecified({name:product.item_data.name,price:product.cost,productId:product.id,quantity:1,totalPrice:product.cost}));
-                        }} className="add">
+                        }} className="addnew">
                           +
                         </button>
                       ) : (
                         console.log()
                       )}
+
                       {finder(product.id) ? (
-                        <ProductButton style={{color: prodcolors.secondary, background: prodcolors.primary,}}
+                        <ProductButton 
                           onClick={() => dispatch(addItemToCart({ product }))}
                         >
-                          {finder(product.id).quantity > 0 ? (finder(product.id).quantity) : (<>Add To Cart</>)}
+                          {finder(product.id).quantity > 0 ? (<span className="prodquant">{finder(product.id).quantity}</span>) : (<>Add To Cart</>)}
                         </ProductButton>
                       ) : (
                         <ProductButton
@@ -130,15 +144,6 @@ const Products = ({
                         >
                           Add to Cart
                         </ProductButton>
-                      )}
-                      {finder(product.id).quantity > 0 ? (
-                        <button onClick={() => {
-                          dispatch(RemoveItemToCart({ name: product.item_data.name, price: product.cost, productId: product.id, quantity: 1, totalPrice: product.cost }));
-                        }} className="remove">
-                          -
-                        </button>
-                      ) : (
-                       console.log()
                       )}
                     </>
                   )}

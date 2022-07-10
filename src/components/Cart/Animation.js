@@ -11,7 +11,7 @@ const Animation = () => {
                     .get("https://api.eatx.in/api/food_order")
                     .then((response) => {
                         history.push('/');
-                        window.prompt("Order Placed!!");
+                        <div><img src='../../images/orderplaced.gif'></img></div>
                         // console.log(response);
                     })
                     .catch((err) => {
@@ -21,7 +21,7 @@ const Animation = () => {
             } catch (error) {
                 console.log(error);
             }
-        }, 1000);
+        }, 3000);
     }, []);
 
     return (

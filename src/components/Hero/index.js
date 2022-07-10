@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import Cart from "../Cart";
-import Footer from "../Footer";
 import {
   HeroContainer,
   HeroContent,
@@ -143,7 +142,7 @@ const Hero = ({apidatas, colorData,tableNo, bannerImg}) => {
           />
         );
       })}
-      <Footer footcolors={colorData} footdatas={apidatas}/>
+      {/* <Footer footcolors={colorData} footdatas={apidatas}/> */}
     </HeroContainer>
   );
 };
